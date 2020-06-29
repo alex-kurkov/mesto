@@ -10,7 +10,68 @@
     <link rel="stylesheet" href="./pages/home.css">
     <title>Mesto</title>
 </head>
-<body>
-    
+<body class="page">
+    <header class="header">
+        <div class="logo"></div>
+    </header>
+    <main class="content">
+        <section class="profile">
+            <img class="profile__avatar" src="" alt="аватар пользователя">
+            <div class="profile__info">
+                <h1 class="profile__title">Someone
+                    <button class="profile__edit-button" type="button" title="Изменить" disabled></button></h1>
+                <p class="profile__profession">Does work of some importance</p>
+            </div>
+            <button class="profile__add-button" type="button" title="Добавить место" disabled></button>
+        </section>
+        <section class="places">
+            <ul class="places__container">
+                <li class="places__card">
+                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
+                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <button class="places__like-button" type="button" title="Нравится" disabled></button>
+                </li>
+                <li class="places__card">
+                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
+                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <button class="places__like-button" type="button" title="Нравится" disabled></button>
+                </li>
+                <li class="places__card">
+                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
+                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <button class="places__like-button" type="button" title="Нравится" disabled></button>
+                </li>
+                <li class="places__card">
+                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
+                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <button class="places__like-button" type="button" title="Нравится" disabled></button>
+                </li>
+                <li class="places__card">
+                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
+                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <button class="places__like-button" type="button" title="Нравится" disabled></button>
+                </li>
+                <li class="places__card">
+                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
+                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <button class="places__like-button" type="button" title="Нравится" disabled></button>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_edit_profile">
+        <button class="popup__close-icon" type="button" title="Закрыть" disabled></button>
+        <div class="popup__form">
+           <h4 class="popup__form-title">Редактировать профиль</h4>
+           <input type="text" class="popup__input popup__input_text_name">
+           <input type="text" class="popup__input popup__input_text_profession">
+           <button class="popup__form-submit" type="button" title="Сохранить">Сохранить</button>
+        </div>
+        
+
+    </div>
 </body>
 </html>
