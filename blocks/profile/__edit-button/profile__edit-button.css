@@ -1,0 +1,12 @@
+.profile__edit-button {
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../../img/icons/edit-icon.png');
+    padding: 0;
+    border: solid 1px #fff;
+    margin-left:  16px;
+}

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Россия, путешествия, учебный сайт, Yandex Praktikum, Яндекс Практикум">
-    <meta name="author" content="Yandex Praktikum">
+    <meta name="keywords" content="Россия, автор, путешествия, учебный сайт, Yandex Praktikum, Яндекс Практикум">
+    <meta name="description" content="Учебный сайт-каталог о посещенных местах с фотографиями и реализованной возможностью управлять каталогом">
     <meta name="author" content="Алексей Курков">
+    <meta lang="ru">
     <link rel="shortcut icon" href="./img/favicon.ico">
     <link rel="stylesheet" href="./pages/home.css">
     <title>Mesto</title>
@@ -16,13 +17,15 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="" alt="аватар пользователя">
-            <div class="profile__info">
-                <h1 class="profile__title">Someone
+            <img class="profile__avatar" src="./img/hian-oliveira.jpg" alt="аватар героя страницы">
+            <div class="profile__container profile__container_content_info">
+                <h1 class="profile__title">Hian Oliveira
                     <button class="profile__edit-button" type="button" title="Изменить" disabled></button></h1>
-                <p class="profile__profession">Does work of some importance</p>
+                <p class="profile__profession">Travel blogger</p>
             </div>
-            <button class="profile__add-button" type="button" title="Добавить место" disabled></button>
+            <div class="profile__container profile__container_content_btn">
+                <button class="profile__add-button" type="button" title="Добавить место" disabled>+</button>
+            </div>
         </section>
         <section class="places">
             <ul class="places__container">

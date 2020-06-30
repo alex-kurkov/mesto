@@ -1,4 +1,19 @@
 .page {
     background-color: black;
+    min-width: 300px;
+    max-width: 100vw;
     text-align: center;
+    padding: 40px;
+}
+
+@media (max-width: 960px) {
+    .page {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 770px) {
+    .page {
+        padding: 12px;
+    }
 }

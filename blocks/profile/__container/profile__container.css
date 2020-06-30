@@ -1,0 +1,7 @@
+@import url('./_content/profile__container_content_info.css');
+@import url('./_content/profile__container_content_btn.css');
+
+.profile__container {
+    padding-left: 30px;
+    align-self: center;
+}

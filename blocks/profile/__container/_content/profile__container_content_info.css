@@ -1,0 +1,7 @@
+.profile__container_content_info {
+    justify-self: start;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+}

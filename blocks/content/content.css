@@ -1,0 +1,12 @@
+.content {
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 50px;
+}
+
+@media (max-width: 960px) {
+    .content {
+        row-gap: 36px;
+    }
+}
