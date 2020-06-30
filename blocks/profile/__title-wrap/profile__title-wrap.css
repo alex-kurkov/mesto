@@ -1,0 +1,6 @@
+.profile__title-wrap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    align-items: baseline;
+}

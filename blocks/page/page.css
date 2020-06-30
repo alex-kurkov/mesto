@@ -1,19 +1,8 @@
 .page {
     background-color: black;
-    min-width: 300px;
-    max-width: 100vw;
+    min-width: 320px;
+    max-width: 1280px;
     text-align: center;
-    padding: 40px;
-}
-
-@media (max-width: 960px) {
-    .page {
-        padding: 24px;
-    }
-}
-
-@media (max-width: 770px) {
-    .page {
-        padding: 12px;
-    }
+    padding: 0;
+    margin: 0 auto;
 }

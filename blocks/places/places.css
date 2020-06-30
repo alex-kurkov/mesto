@@ -1,0 +1,9 @@
+@import url('./__container/places__container.css');
+@import url('./__card/places__card.css');
+@import url('./__card-image/places__card-image.css');
+@import url('./__card-title/places__card-title.css');
+@import url('./__like-button/places__like-button.css');
+
+.places {
+    width: 100%;
+}

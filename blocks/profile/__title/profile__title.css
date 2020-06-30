@@ -5,16 +5,14 @@
     line-height: 1.33;
     color: #fff;
     margin: 0 0 16px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media (max-width: 960px) {
     .profile__title {
-        font-size: 36px;
-    }
-}
-
-@media (max-width: 770px) {
-    .profile__title {
-        font-size: 24px;
+        font-size: 28px;
+        margin-bottom: 0;
     }
 }

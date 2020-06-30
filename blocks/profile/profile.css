@@ -1,13 +1,23 @@
 @import url('./__avatar/profile__avatar.css');
 @import url('./__container/profile__container.css');
-@import url('./__add-button/profile__add-button.css');
+@import url('./__title-wrap/profile__title-wrap.css');
 @import url('./__title/profile__title.css');
-@import url('./__profession/profile__profession.css');
 @import url('./__edit-button/profile__edit-button.css');
+@import url('./__profession/profile__profession.css');
+@import url('./__add-button/profile__add-button.css');
 
 .profile {
-    width: 100%;
     box-sizing: border-box;
+    width: 100%;
     display: grid;
     grid-template-columns: minmax(min-content, max-content) 1fr minmax(min-content, max-content);
+    column-gap: 30px;
+}
+
+@media (max-width: 960px) {
+    .profile {
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        row-gap: 20px;
+    }
 }

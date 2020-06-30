@@ -6,3 +6,9 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+@media (max-width: 480px) {
+    .logo {
+        padding-left: 20px;
+    }
+}

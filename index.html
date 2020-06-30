@@ -19,8 +19,10 @@
         <section class="profile">
             <img class="profile__avatar" src="./img/hian-oliveira.jpg" alt="аватар героя страницы">
             <div class="profile__container profile__container_content_info">
-                <h1 class="profile__title">Hian Oliveira
-                    <button class="profile__edit-button" type="button" title="Изменить" disabled></button></h1>
+                <div class="profile__title-wrap">
+                    <h1 class="profile__title">Hian Oliveira and Olivera and Olivera</h1>
+                    <button class="profile__edit-button" type="button" title="Изменить" disabled></button>
+                </div> 
                 <p class="profile__profession">Travel blogger</p>
             </div>
             <div class="profile__container profile__container_content_btn">
@@ -30,51 +32,53 @@
         <section class="places">
             <ul class="places__container">
                 <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
-                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <img  class="places__card-image" src="./img/card-images/baikal.jpg" alt="">
+                    <h3 class="places__card-title">Озеро Байкал</h3>
                     <button class="places__like-button" type="button" title="Нравится" disabled></button>
                 </li>
                 <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
-                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <img  class="places__card-image" src="./img/card-images/brugge.jpg" alt="">
+                    <h3 class="places__card-title">Брюгге, Бельгия</h3>
                     <button class="places__like-button" type="button" title="Нравится" disabled></button>
                 </li>
                 <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
-                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <img  class="places__card-image" src="./img/card-images/frisco.jpg" alt="">
+                    <h3 class="places__card-title">Сан-Франциско</h3>
                     <button class="places__like-button" type="button" title="Нравится" disabled></button>
                 </li>
                 <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
-                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <img  class="places__card-image" src="./img/card-images/kyoto.jpg" alt="">
+                    <h3 class="places__card-title">Киото</h3>
                     <button class="places__like-button" type="button" title="Нравится" disabled></button>
                 </li>
                 <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
-                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <img  class="places__card-image" src="./img/card-images/saint-peray.jpg" alt="">
+                    <h3 class="places__card-title">Сен-Перэ, Франция</h3>
                     <button class="places__like-button" type="button" title="Нравится" disabled></button>
                 </li>
                 <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/kirill-pershin-1088404-unsplash-1.jpg" alt="">
-                    <h3 class="places__card-title">Нововасюковск</h3>
+                    <img  class="places__card-image" src="./img/card-images/tower-of-piza.jpg" alt="">
+                    <h3 class="places__card-title">Пиза</h3>
                     <button class="places__like-button" type="button" title="Нравится" disabled></button>
                 </li>
             </ul>
         </section>
     </main>
+
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_edit_profile">
-        <button class="popup__close-icon" type="button" title="Закрыть" disabled></button>
-        <div class="popup__form">
-           <h4 class="popup__form-title">Редактировать профиль</h4>
-           <input type="text" class="popup__input popup__input_text_name">
-           <input type="text" class="popup__input popup__input_text_profession">
-           <button class="popup__form-submit" type="button" title="Сохранить">Сохранить</button>
+    
+    <div class="popup">
+        <div class="popup__edit-form">
+            <button class="popup__close-btn" type="button" title="Закрыть" disabled>+</button>
+            <div class="popup__form">
+                <h4 class="popup__form-title">Редактировать профиль</h4>
+                <input type="text" class="popup__input popup__input_text_name">
+                <input type="text" class="popup__input popup__input_text_profession">
+                <button class="popup__form-submit" type="button" title="Сохранить">Сохранить</button>
+            </div>
         </div>
-        
-
     </div>
 </body>
 </html>

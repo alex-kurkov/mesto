@@ -1,3 +1,10 @@
 .profile__container_content_btn {
     justify-self: end;
 }
+
+@media (max-width: 960px) {
+    .profile__container_content_btn {
+        justify-self: stretch;
+        align-items: center;
+    }
+}

@@ -5,3 +5,10 @@
     justify-content: center;
     flex-direction: column;
 }
+
+@media (max-width: 960px) {
+    .profile__container_content_info {
+        justify-self: center;
+        align-items: center;
+    }
+}
