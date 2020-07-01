@@ -1,17 +1,25 @@
-# Проект 4: Место
+# **Project 4 Mesto**
+--------------
+https://alex-kurkov.github.io/mesto/index.html
 
-### Обзор
+assembled and tuned by **Alex Kurkov**,
+_Yandex.Practicum student_
 
-* Figma
-* Картинки
+### **Content**
+---------------------
 
-**Figma**
+Educational site applying basic JS features.
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
+### **Key features**
+---------------------
+* No ads or sponsored content
+* JS, CSS, HTML technologies used
+* No private info tracking
 
-**Картинки**
+### **Amendments to be made soon**
+----------------------------------
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+further JS-development, including cards adding, 'like'-counter feature etc...
 
-Удачи!
+--------
+[connect me via email](mailto:alexkourkov@yandex.ru "Email")
