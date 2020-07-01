@@ -1,0 +1,66 @@
+.form__input {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin: 0 0 30px 0;
+    padding: 0 4px 12px 4px;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    color: #000;
+}
+
+.form__input:last-of-type {
+    margin-bottom: 0;
+}
+
+/* от себя состояние focus добавил*/
+.form__input:focus {
+    outline: none;
+    border-bottom: 2px solid #000;
+}
+
+.form__input::-webkit-input-placeholder {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    color: #000;
+}
+
+.form__input::-moz-placeholder {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    color: #000;
+}
+
+.form__input:-ms-input-placeholder {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    color: #000;
+}
+
+.form__input::-ms-input-placeholder {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    color: #000;
+}
+
+.form__input::placeholder {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    color: #000;
+}

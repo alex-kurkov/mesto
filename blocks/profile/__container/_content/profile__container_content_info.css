@@ -1,14 +1,17 @@
 .profile__container_content_info {
+    width: calc(100% - 270px);
     justify-self: start;
     display: flex;
     align-items: start;
-    justify-content: center;
     flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 @media (max-width: 960px) {
     .profile__container_content_info {
-        justify-self: center;
+        width: 100%;
         align-items: center;
+        padding: 0;
     }
 }

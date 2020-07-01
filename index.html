@@ -8,7 +8,7 @@
     <meta name="author" content="Алексей Курков">
     <meta lang="ru">
     <link rel="shortcut icon" href="./img/favicon.ico">
-    <link rel="stylesheet" href="./pages/home.css">
+    <link rel="stylesheet" href="./index.css">
     <title>Mesto</title>
 </head>
 <body class="page">
@@ -20,13 +20,13 @@
             <img class="profile__avatar" src="./img/hian-oliveira.jpg" alt="аватар героя страницы">
             <div class="profile__container profile__container_content_info">
                 <div class="profile__title-wrap">
-                    <h1 class="profile__title">Hian Oliveira and Olivera and Olivera</h1>
-                    <button class="profile__edit-button" type="button" title="Изменить" disabled></button>
+                    <h1 class="profile__title">Hian Oliveira</h1>
+                    <button class="profile__edit-button" type="button" title="Изменить"></button>
                 </div> 
                 <p class="profile__profession">Travel blogger</p>
             </div>
             <div class="profile__container profile__container_content_btn">
-                <button class="profile__add-button" type="button" title="Добавить место" disabled>+</button>
+                <button disabled class="profile__add-button" type="button" title="Добавить место">+</button>
             </div>
         </section>
         <section class="places">
@@ -69,16 +69,19 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
     
-    <div class="popup">
-        <div class="popup__edit-form">
-            <button class="popup__close-btn" type="button" title="Закрыть" disabled>+</button>
-            <div class="popup__form">
-                <h4 class="popup__form-title">Редактировать профиль</h4>
-                <input type="text" class="popup__input popup__input_text_name">
-                <input type="text" class="popup__input popup__input_text_profession">
-                <button class="popup__form-submit" type="button" title="Сохранить">Сохранить</button>
-            </div>
+    <section class="popup">
+        <div class="popup-form">
+            <button class="popup-form__close-btn" type="button" title="Закрыть">+</button>
+            <form class="form">
+                <h4 class="form__title">Редактировать профиль</h4>
+                <fieldset class="form__input-container">
+                    <input class="form__input form__input_txt_name" type="text" id="name" name="name" placeholder="Hian Oliveira">
+                    <input class="form__input form__input_txt_about" type="text" id="about" name="about" placeholder="Travel blogger">
+                </fieldset>
+                <button class="form__btn form__btn_action_submit" type="button" title="Сохранить">Сохранить</button>
+            </form>
         </div>
-    </div>
+    </section>
+    <script src="./pages/home.js"></script>
 </body>
 </html>

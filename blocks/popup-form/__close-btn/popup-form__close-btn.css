@@ -1,4 +1,4 @@
-.popup__close-btn {
+.popup-form__close-btn {
     position: absolute;
     top: -24px;
     right: -24px;
@@ -14,7 +14,11 @@
     cursor: pointer;
 }
 
-.popup__close-btn:hover {
+.popup-form__close-btn:hover {
     color: rgba(255, 255, 255, 0.6);
     transition: color .2s linear;
+}
+
+.popup-form__close-btn:focus {
+    outline: none;
 }

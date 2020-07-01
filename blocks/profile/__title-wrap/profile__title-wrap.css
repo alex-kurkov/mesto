@@ -1,6 +1,12 @@
 .profile__title-wrap {
     width: 100%;
-    display: grid;
-    grid-template-columns: 9fr 1fr;
+    display: flex;
     align-items: baseline;
+    justify-content: flex-start;
+}
+
+@media (max-width: 960px) {
+    .profile__title-wrap {
+        justify-content: center;
+    }
 }

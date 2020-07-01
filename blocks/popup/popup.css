@@ -1,6 +1,3 @@
-@import url('./__edit-form/popup__edit-form.css');
-@import url('./__close-btn/popup__close-btn.css');
-
 .popup {
     display: none;
     width: 100vw;
