@@ -1,11 +1,11 @@
-.profile__container_content_btn {
+.profile__add-container {
     width: 150px;
     display: flex;
     align-items: center;
 }
 
 @media (max-width: 960px) {
-    .profile__container_content_btn {
+    .profile__add-container {
         width: 100%;
     }
 }

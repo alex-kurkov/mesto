@@ -8,21 +8,23 @@ const inputName = popupForm.querySelector('.form__input_txt_name');
 const inputAbout = popupForm.querySelector('.form__input_txt_about');
 const btnEditProfile = profile.querySelector('.profile__edit-button');
 const btnClosePopup = popup.querySelector('.popup-form__close-btn');
-const btnPopupSubmit = popupForm.querySelector('.form__btn_action_submit');
+const btnPopupSubmit = popupForm.querySelector('.form__btn');
 
-const addPlaceholderName = () => {
-    inputName.setAttribute('placeholder', name.textContent);
+const addInputName = () => {
+    inputName.value = name.textContent;
 };
-const addPlaceholderAbout = () => {
-    inputAbout.setAttribute('placeholder', about.textContent);
+const addInputAbout = () => {
+    inputAbout.value = about.textContent;
 };
-const openPopup = () => {
-    popup.classList.add('popup_opened');
-    addPlaceholderName();
-    addPlaceholderAbout();
-};
-const closePopup = () => {
-    popup.classList.remove('popup_opened');
+// Елизавета, здесь пока не совсем понял, как ресетить форму - буду вникать...
+// const resetFormInputValues = () => {
+//     inputName.value = '';
+//     inputAbout.value = '';
+// }; 
+const togglePopup = () => {
+    popup.classList.toggle('popup_opened');
+    addInputName();
+    addInputAbout();
 };
 const changeName = () => {
     const newName = (inputName.value !== '') ?
@@ -37,9 +39,9 @@ const changeAbout = () => {
 const submitEditForm = () => {
     changeName();
     changeAbout();
-    closePopup();
+    togglePopup();
 };
 
-btnEditProfile.addEventListener('click', openPopup);
-btnClosePopup.addEventListener('click', closePopup);
+btnEditProfile.addEventListener('click', togglePopup);
+btnClosePopup.addEventListener('click', togglePopup);
 btnPopupSubmit.addEventListener('click', submitEditForm);

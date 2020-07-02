@@ -1,4 +1,4 @@
-.profile__container_content_info {
+.profile__info-container {
     width: calc(100% - 270px);
     justify-self: start;
     display: flex;
@@ -6,12 +6,14 @@
     flex-direction: column;
     padding-left: 30px;
     padding-right: 30px;
+    overflow: hidden;
 }
 
 @media (max-width: 960px) {
-    .profile__container_content_info {
+    .profile__info-container {
         width: 100%;
         align-items: center;
         padding: 0;
+        margin-bottom: 36px;
     }
 }

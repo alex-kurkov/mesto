@@ -1,8 +1,7 @@
 .places__card-title {
-    display: inline-block;
-    max-width: 80%;
-    padding: 24px 0 12px 20px;
     margin: 0;
+    padding: 0;
+    max-width: 90%;
     font-family: 'Inter', 'Arial', sans-serif;
     font-weight: 900;
     font-size: 24px;

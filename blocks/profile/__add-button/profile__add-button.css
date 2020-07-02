@@ -2,15 +2,14 @@
     box-sizing: border-box;
     width: 150px;
     height: 50px;
+    padding: 0;
     border: solid 2px white;
     border-radius: 2px;
-    font-family: 'Inter', 'Arial', sans-serif;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 1.2;
-    color: #fff;
     background-color: black;
-    padding: 0;
+    background-image: url('../../../img/icons/add-icon-curve.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: initial;
 }
 
 @media (max-width: 960px) {

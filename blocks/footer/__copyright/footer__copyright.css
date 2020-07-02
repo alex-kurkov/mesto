@@ -11,3 +11,9 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+@media (max-width: 480px) {
+    .footer__copyright {
+        font-size: 14px;
+    }
+}

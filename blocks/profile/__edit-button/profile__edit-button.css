@@ -9,6 +9,7 @@
     padding: 0;
     border: solid 1px #fff;
     margin-left: 8px;
+    cursor: pointer;
 }
 
 @media (max-width: 760px) {
@@ -22,9 +23,8 @@
 .profile__edit-button:hover {
     opacity: .6;
     transition: opacity linear .2s;
-    cursor: pointer;
 }
 
 .profile__edit-button:focus {
-    outline: none;
+    outline: thin;
 }

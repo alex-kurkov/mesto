@@ -1,12 +1,16 @@
 .places__like-button {
-    position: absolute;
-    bottom: 28px;
-    right: 20px;
     width: 20px;
     height: 18px;
     background-image: url('../../../img/icons/like-icon-curve.svg');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    background-color: white;
     border: none;
+    cursor: pointer;
+}
+
+.places__like-button:hover {
+    opacity: .6;
+    transition: opacity linear .2s;
 }

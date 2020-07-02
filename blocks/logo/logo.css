@@ -1,14 +1,14 @@
 .logo {
     width: 142px;
     padding-bottom: 33px;
-    background-image: url('../../img/mesto-logo-white.svg');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    display: block;
+    object-fit: contain;
+    object-position: center;
 }
 
 @media (max-width: 480px) {
     .logo {
+        width: 104px;
         padding-left: 20px;
     }
 }

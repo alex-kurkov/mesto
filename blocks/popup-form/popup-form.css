@@ -1,44 +1,20 @@
 @import url('./__close-btn/popup-form__close-btn.css');
 
 .popup-form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    box-sizing: border-box;
+    position: relative;
     width: 430px;
     min-height: 330px;
-    margin-left: -215px;
-    margin-top: -165px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     padding: 36px;
 }
 
-@media (max-width: 960px) {
-    .popup-form {
-        width: 360px;
-        min-height: 280px;
-        margin-left: -180px;
-        margin-top: -140px;
-        padding: 16px;
-    }
-}
-
-@media (max-width: 760px) {
-    .popup-form {
-        width: 300px;
-        min-height: 240px;
-        margin-left: -150px;
-        margin-top: -60px;
-        padding: 8px;
-    }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .popup-form {
         width: 260px;
         min-height: 200px;
-        margin-left: -144px;
-        margin-top: -160px;
+        padding: 8px;
     }
 }

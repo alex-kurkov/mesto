@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 480px) {
     .form__input-container  {
         margin-bottom: 32px;
     }
