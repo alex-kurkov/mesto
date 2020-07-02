@@ -16,11 +16,16 @@ const addInputName = () => {
 const addInputAbout = () => {
     inputAbout.value = about.textContent;
 };
-// Елизавета, здесь пока не совсем понял, как ресетить форму - буду вникать...
-// const resetFormInputValues = () => {
-//     inputName.value = '';
-//     inputAbout.value = '';
-// }; 
+// Елизавета, здесь пока не совсем уверен, что
+// правильно сделал ресет формы - буду еще вникать...
+const resetFormInputValues = () => {
+    inputName.value = '';
+    inputAbout.value = '';
+}; 
+const closePopup = () => {
+    togglePopup();
+    resetFormInputValues();
+};
 const togglePopup = () => {
     popup.classList.toggle('popup_opened');
     addInputName();
@@ -43,5 +48,5 @@ const submitEditForm = () => {
 };
 
 btnEditProfile.addEventListener('click', togglePopup);
-btnClosePopup.addEventListener('click', togglePopup);
+btnClosePopup.addEventListener('click', closePopup);
 btnPopupSubmit.addEventListener('click', submitEditForm);
