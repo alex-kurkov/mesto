@@ -30,7 +30,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.33;
-    color: #000;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .form__input::-moz-placeholder {
@@ -38,7 +38,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.33;
-    color: #000;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .form__input:-ms-input-placeholder {
@@ -46,15 +46,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.33;
-    color: #000;
-}
-
-.form__input::-ms-input-placeholder {
-    font-family: 'Inter', 'Arial', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.33;
-    color: #000;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .form__input::placeholder {
@@ -62,5 +54,5 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.33;
-    color: #000;
+    color: rgba(0, 0, 0, 0.5);
 }

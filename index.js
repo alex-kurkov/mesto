@@ -20,30 +20,23 @@ const addInputAbout = () => {
 // а отдельный блок, и кнопка закрытия лежит в другом блоке, переделаю
 // уже после получения зачета, а то из-за своей невнимательности и спешки довел до 4 итерации:) 
 // Вдруг еще чего забуду убрать или подчистить:) Спасибо Вам!
-const resetFormInputValues = () => {
-    inputName.value = '';
-    inputAbout.value = '';
-}; 
-const closePopup = () => {
-    togglePopup();
-    resetFormInputValues();
-};
+
 const togglePopup = () => {
     popup.classList.toggle('popup_opened');
     addInputName();
     addInputAbout();
 };
+const closePopup = () => {
+    togglePopup();
+};
 const changeName = () => {
-    const newName = (inputName.value !== '') ?
-        inputName.value : name.textContent;
-    name.textContent = newName;
+    name.textContent = inputName.value;
 };
 const changeAbout = () => {
-    const newAbout = (inputAbout.value !== '') ?
-        inputAbout.value : about.textContent;
-    about.textContent = newAbout;
+    about.textContent = inputAbout.value;
 };
 const submitEditForm = () => {
+    event.preventDefault();
     changeName();
     changeAbout();
     togglePopup();
