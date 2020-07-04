@@ -16,32 +16,21 @@ const addInputName = () => {
 const addInputAbout = () => {
     inputAbout.value = about.textContent;
 };
-// Елизавета, про ресет - понял, как сделать, но так как форма редактирования у меня не элемент, 
-// а отдельный блок, и кнопка закрытия лежит в другом блоке, переделаю
-// уже после получения зачета, а то из-за своей невнимательности и спешки довел до 4 итерации:) 
-// Вдруг еще чего забуду убрать или подчистить:) Спасибо Вам!
-
 const togglePopup = () => {
     popup.classList.toggle('popup_opened');
+};
+const openPopup = () => {
+    togglePopup();
     addInputName();
     addInputAbout();
 };
-const closePopup = () => {
-    togglePopup();
-};
-const changeName = () => {
-    name.textContent = inputName.value;
-};
-const changeAbout = () => {
-    about.textContent = inputAbout.value;
-};
-const submitEditForm = () => {
+const submitEditForm = (event) => {
     event.preventDefault();
-    changeName();
-    changeAbout();
+    name.textContent = inputName.value;
+    about.textContent = inputAbout.value;
     togglePopup();
 };
 
-btnEditProfile.addEventListener('click', togglePopup);
-btnClosePopup.addEventListener('click', closePopup);
-btnPopupSubmit.addEventListener('click', submitEditForm);
+btnEditProfile.addEventListener('click', openPopup);
+btnClosePopup.addEventListener('click', togglePopup);
+btnPopupSubmit.addEventListener('submit', submitEditForm);
