@@ -8,7 +8,7 @@ const inputName = popupForm.querySelector('.form__input_txt_name');
 const inputAbout = popupForm.querySelector('.form__input_txt_about');
 const btnEditProfile = profile.querySelector('.profile__edit-button');
 const btnClosePopup = popup.querySelector('.popup-form__close-btn');
-const btnPopupSubmit = popupForm.querySelector('.form__btn');
+const form = popup.querySelector('.form');
 
 const addInputName = () => {
     inputName.value = name.textContent;
@@ -20,11 +20,12 @@ const togglePopup = () => {
     popup.classList.toggle('popup_opened');
 };
 const openPopup = () => {
+    inputName.value = name.textContent;
+    inputAbout.value = about.textContent;
     togglePopup();
-    addInputName();
-    addInputAbout();
 };
-const submitEditForm = (event) => {
+const submitForm = (event) => {
+    console.log('sdlkjsaldkvc');
     event.preventDefault();
     name.textContent = inputName.value;
     about.textContent = inputAbout.value;
@@ -33,4 +34,4 @@ const submitEditForm = (event) => {
 
 btnEditProfile.addEventListener('click', openPopup);
 btnClosePopup.addEventListener('click', togglePopup);
-btnPopupSubmit.addEventListener('submit', submitEditForm);
+form.addEventListener("submit", submitForm);
