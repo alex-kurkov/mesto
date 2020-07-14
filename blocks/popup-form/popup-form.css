@@ -1,4 +1,7 @@
 @import url('./__close-btn/popup-form__close-btn.css');
+@import url('./_type/popup-form_type_card-edit.css');
+@import url('./_type/popup-form_type_profile-edit.css');
+
 
 .popup-form {
     box-sizing: border-box;

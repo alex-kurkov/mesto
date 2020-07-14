@@ -40,18 +40,30 @@
     </footer>
     
     <div class="popup">
-        <div class="popup-form">
+        <div class="popup-form popup-form_type_profile-edit">
             <button class="popup-form__close-btn" type="reset" title="Закрыть"></button>
             <form class="form" method="post">
                 <fieldset class="form__input-container">
                     <legend class="form__title">Редактировать профиль</legend>
                     <input class="form__input form__input_txt_name" type="text" id="name" name="name" value="" placeholder="Hian Oliveira">
                     <input class="form__input form__input_txt_about" type="text" id="about" name="about" value="" placeholder="Travel blogger">
-                    </fieldset>
+                </fieldset>
                 <button class="form__btn" type="submit">Сохранить</button>
             </form>
         </div>
+        <div class="popup-form popup-form_type_card-edit">
+            <button class="popup-form__close-btn" type="reset" title="Закрыть"></button>
+            <form class="form" method="post">
+                <fieldset class="form__input-container">
+                    <legend class="form__title">Новое место</legend>
+                    <input class="form__input form__input_txt_title" type="title" id="title" name="title" value="" placeholder="Название">
+                    <input class="form__input form__input_txt_link" type="link" id="link" name="link" value="" placeholder="Ссылка на картинку">
+                </fieldset>
+                <button class="form__btn" type="submit">Создать</button>
+            </form>
+        </div>
     </div>
+
     <template id="places__card">
         <li class="places__card">
             <img  class="places__card-image" src="" alt="">
