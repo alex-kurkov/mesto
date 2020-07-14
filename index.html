@@ -31,48 +31,6 @@
         </section>
         <section class="places">
             <ul class="places__container">
-                <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/baikal.jpg" alt="фотография озера Байкал">
-                        <div class="places__description-wrap">
-                            <h3 class="places__card-title">Озеро Байкал</h3>
-                            <button class="places__like-button" type="button" title="Нравится"></button>
-                        </div>
-                </li>
-                <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/brugge.jpg" alt="фотография городского пейзажа города Брюгге">
-                    <div class="places__description-wrap">
-                        <h3 class="places__card-title">Брюгге, Бельгия</h3>
-                        <button class="places__like-button" type="button" title="Нравится"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/frisco.jpg" alt="Мост Золотые ворота в Сан-Франциско">
-                    <div class="places__description-wrap">
-                        <h3 class="places__card-title">Сан-Франциско</h3>
-                        <button class="places__like-button" type="button" title="Нравится"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/kyoto.jpg" alt="бамбуковая аллея в Киото">
-                    <div class="places__description-wrap">
-                        <h3 class="places__card-title">Киото</h3>
-                        <button class="places__like-button" type="button" title="Нравится"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/saint-peray.jpg" alt="замок Сен-Перэ во Франции">
-                    <div class="places__description-wrap">
-                        <h3 class="places__card-title">Сен-Перэ, Франция</h3>
-                        <button class="places__like-button" type="button" title="Нравится"></button>
-                    </div>
-                </li>
-                <li class="places__card">
-                    <img  class="places__card-image" src="./img/card-images/tower-of-piza.jpg" alt="Пизанская башня">
-                    <div class="places__description-wrap">
-                        <h3 class="places__card-title">Пиза</h3>
-                        <button class="places__like-button" type="button" title="Нравится"></button>
-                    </div>
-                </li>
             </ul>
         </section>
     </main>
@@ -94,6 +52,16 @@
             </form>
         </div>
     </div>
+    <template id="places__card">
+        <li class="places__card">
+            <img  class="places__card-image" src="" alt="">
+            <div class="places__description-wrap">
+                <h3 class="places__card-title"></h3>
+                <button class="places__like-button" type="button" title="Нравится"></button>
+            </div>
+            <button class="places__trash-btn" type="button" title="Удалить"></button>
+        </li>
+    </template>
     <script src="./index.js"></script>
 </body>
 </html>
