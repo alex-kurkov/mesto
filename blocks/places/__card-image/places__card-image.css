@@ -3,4 +3,5 @@
     height: 78%;
     object-fit: cover;
     object-position: center;
+    cursor: pointer;
 }

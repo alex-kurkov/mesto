@@ -8,7 +8,9 @@
 @import url('./blocks/places/places.css');
 @import url('./blocks/footer/footer.css');
 @import url('./blocks/popup/popup.css');
+@import url('./blocks/close-btn/close-btn.css');
 @import url('./blocks/popup/_opened/popup_opened.css');
 @import url('./blocks/popup-form/popup-form.css');
 @import url('./blocks/form/form.css');
+@import url('./blocks/popup-image/popup-image.css');
 @import url('./blocks/display/_is-visible/display_is-visible.css');

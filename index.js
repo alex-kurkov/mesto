@@ -44,6 +44,7 @@ const inputAbout = formProfileEdit.querySelector('.form__input_txt_about');
 const formCardEdit = popup.querySelector('.popup-form_type_card-edit');
 const inputTitle = formCardEdit.querySelector('.form__input_txt_title');
 const inputLink = formCardEdit.querySelector('.form__input_txt_link');
+const popupImage = popup.querySelector('.popup-image');
 const cardTemplate = document.querySelector('#places__card').content;
 const placesContainer = content.querySelector('.places__container');
 
@@ -58,14 +59,13 @@ const closePopup = (evt) => {
     const buttonParent = evt.target.parentElement;
     toggleElementVisibility(buttonParent);
 };
-
 const openProfilePopup = () => {
     inputName.value = name.textContent;
     inputAbout.value = about.textContent;
     togglePopup();
     toggleElementVisibility(formProfileEdit);
 
-    const btnClosePopup = formProfileEdit.querySelector('.popup-form__close-btn');
+    const btnClosePopup = formProfileEdit.querySelector('.close-btn');
     btnClosePopup.addEventListener('click', closePopup);
 };
 const addInputName = () => {
@@ -80,13 +80,21 @@ const submitProfileForm = (evt) => {
     about.textContent = inputAbout.value;
     closePopup(evt);
 };
-
 const addCardPopup = () => {
     togglePopup();
     toggleElementVisibility(formCardEdit);
     
-    const btnClosePopup = formCardEdit.querySelector('.popup-form__close-btn');
+    const btnClosePopup = formCardEdit.querySelector('.close-btn');
     btnClosePopup.addEventListener('click', closePopup);
+};
+const showImagePopup = (evt) => {
+    togglePopup();
+    toggleElementVisibility(popupImage);
+    const clickedCard = evt.target;
+    const btnClosePopup = popupImage.querySelector('.close-btn');
+    btnClosePopup.addEventListener('click', closePopup);
+    popupImage.querySelector('.popup-image__img').src = clickedCard.src
+    popupImage.querySelector('.popup-image__title').textContent = clickedCard.parentElement.querySelector('.places__card-title').textContent;
 };
 const makeCard = ({name = 'Место N', link = 'https://clck.ru/PeeMN', alt = 'Фотография места'}) => {
     const placesCard = cardTemplate.cloneNode(true);
@@ -95,17 +103,20 @@ const makeCard = ({name = 'Место N', link = 'https://clck.ru/PeeMN', alt = 
     placesCard.querySelector('.places__card-image').alt = alt;
     placesCard.querySelector('.places__card-title').textContent = name;
     
-    placesCard.querySelector('.places__like-button').addEventListener('click', () => {});
-    placesCard.querySelector('.places__trash-btn').addEventListener('click', () => {});
+    placesCard.querySelector('.places__card-image').addEventListener('click', showImagePopup);
+    placesCard.querySelector('.places__like-button').addEventListener('click', (evt) => {
+        evt.target.classList.toggle('places__like-button_state_clicked');
+    });
+    placesCard.querySelector('.places__trash-btn').addEventListener('click', (evt) => {
+        evt.target.parentElement.remove();
+    });
 
     placesContainer.prepend(placesCard);
 };
-
 const isValidUrl = (url) => {
     const u = /http(s?):\/\/[-\w\.]{3,}\.[A-Za-z]{2,3}/;
     return u.test(url);
 };
-
 const submitNewCard = (evt) => {
     evt.preventDefault();
     const newPlace = { 
