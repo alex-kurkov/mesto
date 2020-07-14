@@ -51,8 +51,10 @@ const placesContainer = content.querySelector('.places__container');
 const toggleElementVisibility = (element) => {
     element.classList.toggle('display_is-visible');
 };
-const togglePopup = () => {
+const togglePopup = (bgRender) => {
     popup.classList.toggle('popup_opened');
+    popup.style.backgroundColor = (popup.classList.contains('popup_opened') && bgRender === 'xtra-dark') ? 
+        'rgba(0, 0, 0, .9)' : 'rgba(0, 0, 0, .5)';
 };
 const closePopup = (evt) => {
     togglePopup();
@@ -83,12 +85,13 @@ const submitProfileForm = (evt) => {
 const addCardPopup = () => {
     togglePopup();
     toggleElementVisibility(formCardEdit);
-    
+    inputTitle.value = '';
+    inputLink.value = '';
     const btnClosePopup = formCardEdit.querySelector('.close-btn');
     btnClosePopup.addEventListener('click', closePopup);
 };
 const showImagePopup = (evt) => {
-    togglePopup();
+    togglePopup('xtra-dark');
     toggleElementVisibility(popupImage);
     const clickedCard = evt.target;
     const btnClosePopup = popupImage.querySelector('.close-btn');

@@ -2,6 +2,8 @@
 @import url('./__title/popup-image__title.css');
 
 .popup-image {
-    display: none;
-    position: relative;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity .5s ease;
+    position: absolute;
 }

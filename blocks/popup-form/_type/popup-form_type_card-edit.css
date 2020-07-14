@@ -1,3 +1,4 @@
 .popup-form_type_card-edit {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
