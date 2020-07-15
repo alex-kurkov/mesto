@@ -1,7 +1,8 @@
 .profile__title-wrap {
     width: 100%;
     display: flex;
-    align-items: baseline;
+    /* Ролан, спасибо за похвалу - очень приятно, первый раз настолько гладко все)
+    буду пока решать задачки по js, а выравнивание перенесу на саму кнопку*/
     justify-content: flex-start;
 }
 
