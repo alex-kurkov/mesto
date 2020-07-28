@@ -31,8 +31,7 @@ const initialCards = [
     }
 ];
 
-const content = document.querySelector('.content');
-const profile = content.querySelector('.profile');
+const profile = document.querySelector('.profile');
 const name = profile.querySelector('.profile__title');
 const about = profile.querySelector('.profile__profession');
 const popup = document.querySelector('.popup');
@@ -46,8 +45,8 @@ const formCardEdit = popup.querySelector('.popup-form_type_card-edit');
 const inputTitle = formCardEdit.querySelector('.form__input_txt_title');
 const inputLink = formCardEdit.querySelector('.form__input_txt_link');
 const popupImage = popup.querySelector('.popup-image');
-const cardTemplate = document.querySelector('#places__card').content;
-const placesContainer = content.querySelector('.places__container');
+
+const placesContainer = document.querySelector('.places__container');
 
 const toggleElementVisibility = (element) => {
     element.classList.toggle('display_is-visible');
@@ -59,11 +58,10 @@ const togglePopup = (bgRender) => {
 };
 const closePopup = (evt) => {
     togglePopup();
-    const buttonParent = evt.target.parentElement;
-    toggleElementVisibility(buttonParent);
+    const btnParent = evt.target.parentElement;
+    toggleElementVisibility(btnParent);
 };
 const openProfilePopup = () => {
-
     togglePopup();
     toggleElementVisibility(formProfileEdit);
 
@@ -100,31 +98,29 @@ const showImagePopup = (evt) => {
     popupImage.querySelector('.popup-image__title').textContent = clickedImage.parentElement.querySelector('.places__card-title').textContent;
 };
 const makeCard = ({name = 'Место N', link = 'https://clck.ru/PeeMN', alt = 'Фотография места'}) => {
-    const placesCard = cardTemplate.cloneNode(true);
+    const cardTemplate = document.querySelector('#places__card').content;
+    const elCard = cardTemplate.cloneNode(true);
     
-    placesCard.querySelector('.places__card-image').src = link;
-    placesCard.querySelector('.places__card-image').alt = alt;
-    placesCard.querySelector('.places__card-title').textContent = name;
+    elCard.querySelector('.places__card-image').src = link;
+    elCard.querySelector('.places__card-image').alt = alt;
+    elCard.querySelector('.places__card-title').textContent = name;
     
-    placesCard.querySelector('.places__card-image').addEventListener('click', showImagePopup);
-    placesCard.querySelector('.places__like-button').addEventListener('click', (evt) => {
+    elCard.querySelector('.places__card-image').addEventListener('click', showImagePopup);
+    elCard.querySelector('.places__like-button').addEventListener('click', (evt) => {
         evt.target.classList.toggle('places__like-button_state_clicked');
     });
-    placesCard.querySelector('.places__trash-btn').addEventListener('click', (evt) => {
+    elCard.querySelector('.places__trash-btn').addEventListener('click', (evt) => {
         evt.target.parentElement.remove();
     });
 
-    placesContainer.prepend(placesCard);
+    placesContainer.prepend(elCard);
 };
-const isValidUrl = (url) => {
-    const u = /http(s?):\/\/[-\w\.]{3,}\.[A-Za-z]{2,3}/;
-    return u.test(url);
-};
+
 const submitNewCard = (evt) => {
     evt.preventDefault();
     const newPlace = { 
         name: inputTitle.value,
-        link: isValidUrl(inputLink.value) ? inputLink.value : undefined,
+        link: inputLink.value,
     };
     makeCard (newPlace);
     closePopup(evt);

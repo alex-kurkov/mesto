@@ -15,11 +15,13 @@ Educational site applying basic JS features.
 * No ads or sponsored content
 * JS, CSS, HTML technologies used
 * No private info tracking
+* Forms validated
+* Other features: card adding, like-fn
 
 ### **Amendments to be made soon**
 ----------------------------------
 
-further JS-development, including cards adding, 'like'-counter feature etc...
+further JS-development
 
 --------
 [connect me via email](mailto:alexkourkov@yandex.ru "Email")

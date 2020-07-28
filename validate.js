@@ -1,14 +1,14 @@
 const showInputError = (elForm, elInput, errorMessage, setupObj) => {
     const elError = elForm.querySelector(`#${elInput.id}-error`);
-    elInput.classList.add('form__input_type_error');
-    elError.classList.add('form__error_visible');
+    elInput.classList.add(setupObj.inputErrorClass);
+    elError.classList.add(setupObj.errorClass);
     elError.textContent = errorMessage;
   };
   
 const hideInputError = (elForm, elInput, setupObj) => {
     const elError = elForm.querySelector(`#${elInput.id}-error`);
-    elInput.classList.remove('form__input_type_error');
-    elError.classList.remove('form__error_visible');
+    elInput.classList.remove(setupObj.inputErrorClass);
+    elError.classList.remove(setupObj.errorClass);
     elError.textContent = '';
   };
   
@@ -34,7 +34,7 @@ const setEventListeners = (elForm, setupObj) => {
     toggleButtonState(inputList, elBtn, setupObj);
     inputList.forEach((elInput) => {
         elInput.addEventListener('input', () => {
-            checkInputValidity(elForm, elInput);
+            checkInputValidity(elForm, elInput, setupObj);
             toggleButtonState(inputList, elBtn, setupObj);
         });
     });
@@ -48,9 +48,6 @@ const enableValidation = (setupObj) => {
     formList.forEach((elForm) => {
         elForm.addEventListener('submit', (evt) => evt.preventDefault());
         setEventListeners(elForm, setupObj);
-
-        //const fieldsetList = Array.from(elForm.querySelectorAll('.form__set'));
-        //fieldsetList.forEach((fieldset) => setEventListeners(fieldset));
     });
 };
 

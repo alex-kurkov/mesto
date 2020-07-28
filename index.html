@@ -52,7 +52,7 @@
                     </label>
                     <label class="form__field">
                         <input class="form__input form__input_txt_about" type="text" id="about-input" name="about-input" 
-                            value="" placeholder="О Вас" minlength="2" maxlength="40" required>
+                            value="" placeholder="О Вас" minlength="2" maxlength="200" required>
                         <span class="form__error" id="about-input-error"></span>
                     </label>
                 </fieldset>
@@ -64,8 +64,16 @@
             <form class="form" method="post" novalidate>
                 <fieldset class="form__input-container">
                     <legend class="form__title">Новое место</legend>
-                    <input class="form__input form__input_txt_title" type="text" id="title" name="title" value="" placeholder="Название">
-                    <input class="form__input form__input_txt_link" type="text" id="link" name="link" value="" placeholder="Ссылка на картинку">
+                    <label class="form__field">
+                        <input class="form__input form__input_txt_title" type="text" id="place-input" name="place"
+                        value="" placeholder="Название" minlength="1" maxlength="30" required>
+                        <span class="form__error" id="place-input-error"></span>
+                    </label>
+                    <label class="form__field"></label>
+                        <input class="form__input form__input_txt_link" type="url" id="link-input" name="link"
+                        value="" placeholder="Ссылка на картинку" required>
+                        <span class="form__error" id="link-input-error"></span>
+                    </label>
                 </fieldset>
                 <button class="form__btn" type="submit">Создать</button>
             </form>
