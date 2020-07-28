@@ -63,8 +63,7 @@ const closePopup = (evt) => {
     toggleElementVisibility(buttonParent);
 };
 const openProfilePopup = () => {
-    inputName.value = name.textContent;
-    inputAbout.value = about.textContent;
+
     togglePopup();
     toggleElementVisibility(formProfileEdit);
 

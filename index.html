@@ -42,18 +42,26 @@
     <div class="popup">
         <div class="popup-form popup-form_type_profile-edit">
             <button class="close-btn" type="button" title="Закрыть"></button>
-            <form class="form" method="post">
+            <form class="form" method="post" novalidate>
                 <fieldset class="form__input-container">
                     <legend class="form__title">Редактировать профиль</legend>
-                    <input class="form__input form__input_txt_name" type="text" id="name" name="name" value="" placeholder="Hian Oliveira">
-                    <input class="form__input form__input_txt_about" type="text" id="about" name="about" value="" placeholder="Travel blogger">
+                    <label class="form__field">
+                        <input class="form__input form__input_txt_name" type="text" id="name-input" name="name-input" 
+                            value="" placeholder="Введите имя" minlength="2" maxlength="40" required>
+                        <span class="form__error" id="name-input-error"></span>
+                    </label>
+                    <label class="form__field">
+                        <input class="form__input form__input_txt_about" type="text" id="about-input" name="about-input" 
+                            value="" placeholder="О Вас" minlength="2" maxlength="40" required>
+                        <span class="form__error" id="about-input-error"></span>
+                    </label>
                 </fieldset>
                 <button class="form__btn" type="submit">Сохранить</button>
             </form>
         </div>
         <div class="popup-form popup-form_type_card-edit">
             <button class="close-btn" type="button" title="Закрыть"></button>
-            <form class="form" method="post">
+            <form class="form" method="post" novalidate>
                 <fieldset class="form__input-container">
                     <legend class="form__title">Новое место</legend>
                     <input class="form__input form__input_txt_title" type="text" id="title" name="title" value="" placeholder="Название">
@@ -80,5 +88,6 @@
         </li>
     </template>
     <script src="./index.js"></script>
+    <script src="./validate.js"></script>
 </body>
 </html>
