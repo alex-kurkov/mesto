@@ -30,6 +30,7 @@ const initialCards = [
         alt: 'фотография скал и скованного льдом Байкала',
     }
 ];
+
 const content = document.querySelector('.content');
 const profile = content.querySelector('.profile');
 const name = profile.querySelector('.profile__title');
@@ -93,11 +94,11 @@ const addCardPopup = () => {
 const showImagePopup = (evt) => {
     togglePopup('xtra-dark');
     toggleElementVisibility(popupImage);
-    const clickedCard = evt.target;
+    const clickedImage = evt.target;
     const btnClosePopup = popupImage.querySelector('.close-btn');
     btnClosePopup.addEventListener('click', closePopup);
-    popupImage.querySelector('.popup-image__img').src = clickedCard.src
-    popupImage.querySelector('.popup-image__title').textContent = clickedCard.parentElement.querySelector('.places__card-title').textContent;
+    popupImage.querySelector('.popup-image__img').src = clickedImage.src
+    popupImage.querySelector('.popup-image__title').textContent = clickedImage.parentElement.querySelector('.places__card-title').textContent;
 };
 const makeCard = ({name = 'Место N', link = 'https://clck.ru/PeeMN', alt = 'Фотография места'}) => {
     const placesCard = cardTemplate.cloneNode(true);

@@ -1,0 +1,37 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "https://github.com/alex-kurkov/mesto#readme",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint --colors",
+    "test": "jest",
+    "build": "cross-env NODE_ENV=production babel src --out-dir dist --source-maps",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-kurkov/mesto.git"
+  },
+  "keywords": [
+    "educational",
+    "yandex",
+    "alexkurkov"
+  ],
+  "author": "Alex Kurkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-kurkov/mesto/issues"
+  },
+  "homepage": "https://alex-kurkov.github.io/mesto/index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.5.0",
+    "jest": "^26.1.0"
+  }
+}
