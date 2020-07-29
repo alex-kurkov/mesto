@@ -41,6 +41,7 @@ const placesContainer = document.querySelector('.places__container');
 const popup = document.querySelector('.popup');
 const popupImage = popup.querySelector('.popup-image');
 const overlay = popup.querySelector('.overlay');
+const closePopupButtons = document.querySelectorAll('.close-btn');
 // profile form
 const formProfileEdit = popup.querySelector('.popup-form_type_profile-edit');
 const inputName = formProfileEdit.querySelector('.form__input_txt_name');
@@ -111,12 +112,13 @@ const showImagePopup = (evt) => {
 const makeCard = ({name, link, alt = 'Фотография места'}) => {
     const cardTemplate = document.querySelector('#places__card').content;
     const card = cardTemplate.cloneNode(true);
-    
-    card.querySelector('.places__card-image').src = link;
-    card.querySelector('.places__card-image').alt = alt;
+    const cardImage = card.querySelector('.places__card-image');
+
+    cardImage.src = link;
+    cardImage.alt = alt;
     card.querySelector('.places__card-title').textContent = name;
     
-    card.querySelector('.places__card-image').addEventListener('click', showImagePopup);
+    cardImage.addEventListener('click', showImagePopup);
     card.querySelector('.places__like-button').addEventListener('click', (evt) => {
         evt.target.classList.toggle('places__like-button_state_clicked');
     });
@@ -144,7 +146,7 @@ const submitNewCard = (evt) => {
 
 initialCards.forEach(renderNewCard);
 
-const closePopupButtons = document.querySelectorAll('.close-btn');
+
 closePopupButtons.forEach(btnClosePopup => btnClosePopup.addEventListener('click', closePopup));
 btnEditProfile.addEventListener('click', showProfilePopup);
 btnAddCard.addEventListener('click', showAddCardPopup);

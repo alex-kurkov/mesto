@@ -11,7 +11,10 @@ const hideInputError = (elForm, elInput, setupObj) => {
     elError.classList.remove(setupObj.errorClass);
     elError.textContent = '';
   };
-  
+
+const hasInvalidInput = inputList => inputList
+    .some(el => !el.validity.valid);  
+
 const checkInputValidity = (elForm, elInput, setupObj) => {
     if (!elInput.validity.valid) {
       showInputError(elForm, elInput, elInput.validationMessage, setupObj);
@@ -51,9 +54,6 @@ const preventUnvalidSubmit = (evt, formSelector, inputSelector) => {
     evt.preventDefault();
   }
 };
-
-const hasInvalidInput = inputList => inputList
-    .some(el => !el.validity.valid);
 
 const enableValidation = (setupObj) => {
     const formList = Array.from(document.querySelectorAll(`${setupObj.formSelector}`));
