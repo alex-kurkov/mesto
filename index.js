@@ -63,26 +63,27 @@ const renderOverlayBg = (color = 'rgba(0, 0, 0, .5)') => {
 const closePopup = evt => {
     const modal = evt.target.parentElement;
     hideElement(popup, modal);
-    document.removeEventListener('keydown', closeThruEscape);
+    document.removeEventListener('keydown', closeByEscape);
 };
-const closeThruOverlay = () => {
+const closeByOverlay = () => {
     const siblings = Array.from(overlay.parentElement.childNodes);
     siblings
         .filter(node => node.nodeType === Node.ELEMENT_NODE)
         .forEach(sibling => sibling.classList.remove('display_is-visible'));
     hideElement(popup);
 };
-const closeThruEscape = (evt) => {
-    console.log(evt);
+const closeByEscape = (evt) => {
     if (evt.key === 'Escape') { 
-        closeThruOverlay()
+        closeByOverlay()
     };
 };
 
 const showProfilePopup = () => {
     showElement(popup, formProfileEdit);
     renderOverlayBg();
-    document.addEventListener('keydown', closeThruEscape);
+    inputName.value = name.textContent;
+    inputAbout.value = about.textContent;
+    document.addEventListener('keydown', closeByEscape);
 };
 
 const submitProfileForm = (evt) => {
@@ -96,7 +97,7 @@ const showAddCardPopup = () => {
     renderOverlayBg();
     inputTitle.value = '';
     inputLink.value = '';
-    document.addEventListener('keydown', closeThruEscape);
+    document.addEventListener('keydown', closeByEscape);
 };
 const showImagePopup = (evt) => {
     const clickedImage = evt.target;
@@ -105,25 +106,30 @@ const showImagePopup = (evt) => {
 
     showElement(popup, popupImage);
     renderOverlayBg('rgba(0, 0, 0, .9)');
-    document.addEventListener('keydown', closeThruEscape);
+    document.addEventListener('keydown', closeByEscape);
 };
 const makeCard = ({name, link, alt = 'Фотография места'}) => {
     const cardTemplate = document.querySelector('#places__card').content;
-    const elCard = cardTemplate.cloneNode(true);
+    const card = cardTemplate.cloneNode(true);
     
-    elCard.querySelector('.places__card-image').src = link;
-    elCard.querySelector('.places__card-image').alt = alt;
-    elCard.querySelector('.places__card-title').textContent = name;
+    card.querySelector('.places__card-image').src = link;
+    card.querySelector('.places__card-image').alt = alt;
+    card.querySelector('.places__card-title').textContent = name;
     
-    elCard.querySelector('.places__card-image').addEventListener('click', showImagePopup);
-    elCard.querySelector('.places__like-button').addEventListener('click', (evt) => {
+    card.querySelector('.places__card-image').addEventListener('click', showImagePopup);
+    card.querySelector('.places__like-button').addEventListener('click', (evt) => {
         evt.target.classList.toggle('places__like-button_state_clicked');
     });
-    elCard.querySelector('.places__trash-btn').addEventListener('click', (evt) => {
+    card.querySelector('.places__trash-btn').addEventListener('click', (evt) => {
         evt.target.parentElement.remove();
     });
+    return card;
+    // placesContainer.prepend(card);
+};
 
-    placesContainer.prepend(elCard);
+const renderNewCard = (card) => {
+    const newCard = makeCard(card);
+    placesContainer.append(newCard);
 };
 
 const submitNewCard = (evt) => {
@@ -132,11 +138,11 @@ const submitNewCard = (evt) => {
         name: inputTitle.value,
         link: inputLink.value,
     };
-    makeCard (newPlace);
+    renderNewCard(newPlace);
     closePopup(evt);
 };
 
-initialCards.forEach(makeCard);
+initialCards.forEach(renderNewCard);
 
 const closePopupButtons = document.querySelectorAll('.close-btn');
 closePopupButtons.forEach(btnClosePopup => btnClosePopup.addEventListener('click', closePopup));
@@ -144,4 +150,4 @@ btnEditProfile.addEventListener('click', showProfilePopup);
 btnAddCard.addEventListener('click', showAddCardPopup);
 formProfileEdit.addEventListener("submit", submitProfileForm);
 formCardEdit.addEventListener('submit', submitNewCard);
-overlay.addEventListener('click', closeThruOverlay);
+overlay.addEventListener('click', closeByOverlay);

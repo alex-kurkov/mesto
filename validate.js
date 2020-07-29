@@ -23,8 +23,10 @@ const checkInputValidity = (elForm, elInput, setupObj) => {
 const toggleButtonState = (inputList, elBtn, setupObj) => {
     if (hasInvalidInput(inputList)) {
         elBtn.classList.add(`${setupObj.inactiveButtonClass}`);
+        elBtn.setAttribute('disabled', true);
     } else {
         elBtn.classList.remove(`${setupObj.inactiveButtonClass}`);
+        elBtn.removeAttribute('disabled');
     }
   };
 
