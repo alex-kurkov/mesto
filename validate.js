@@ -37,16 +37,25 @@ const setEventListeners = (elForm, setupObj) => {
             checkInputValidity(elForm, elInput, setupObj);
             toggleButtonState(inputList, elBtn, setupObj);
         });
+        elInput.addEventListener('keydown', (evt) => {
+          preventUnvalidSubmit(evt, setupObj.formSelector, setupObj.inputSelector);
+        })
     });
 };
 
+const preventUnvalidSubmit = (evt, formSelector, inputSelector) => {
+  const inputList = Array.from(evt.target.closest(formSelector).querySelectorAll(inputSelector));
+  if (evt.key === 'Enter' && hasInvalidInput(inputList)) {
+    evt.preventDefault();
+  }
+};
+
 const hasInvalidInput = inputList => inputList
-    .some((el) => !el.validity.valid);
+    .some(el => !el.validity.valid);
 
 const enableValidation = (setupObj) => {
     const formList = Array.from(document.querySelectorAll(`${setupObj.formSelector}`));
     formList.forEach((elForm) => {
-        elForm.addEventListener('submit', (evt) => evt.preventDefault());
         setEventListeners(elForm, setupObj);
     });
 };

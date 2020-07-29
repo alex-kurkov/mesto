@@ -1,0 +1,4 @@
+.display_is-hidden {
+    visibility: collapse;
+    opacity: 0;
+}

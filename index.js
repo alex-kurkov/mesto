@@ -30,74 +30,84 @@ const initialCards = [
         alt: 'фотография скал и скованного льдом Байкала',
     }
 ];
-
+// profile & places sections elements
 const profile = document.querySelector('.profile');
 const name = profile.querySelector('.profile__title');
 const about = profile.querySelector('.profile__profession');
-const popup = document.querySelector('.popup');
-const popupForm = popup.querySelector('.popup-form');
 const btnEditProfile = profile.querySelector('.profile__edit-button');
 const btnAddCard = profile.querySelector('.profile__add-button');
+const placesContainer = document.querySelector('.places__container');
+// popup elements
+const popup = document.querySelector('.popup');
+const popupImage = popup.querySelector('.popup-image');
+const overlay = popup.querySelector('.overlay');
+// profile form
 const formProfileEdit = popup.querySelector('.popup-form_type_profile-edit');
 const inputName = formProfileEdit.querySelector('.form__input_txt_name');
 const inputAbout = formProfileEdit.querySelector('.form__input_txt_about');
+// card add form
 const formCardEdit = popup.querySelector('.popup-form_type_card-edit');
 const inputTitle = formCardEdit.querySelector('.form__input_txt_title');
 const inputLink = formCardEdit.querySelector('.form__input_txt_link');
-const popupImage = popup.querySelector('.popup-image');
 
-const placesContainer = document.querySelector('.places__container');
+const hideElement = (...rest) => {
+    rest.forEach(el => el.classList.remove('display_is-visible'));
+};
+const showElement = (...rest) => {
+    rest.forEach(el => el.classList.add('display_is-visible'));
+};
+const renderOverlayBg = (color = 'rgba(0, 0, 0, .5)') => {
+    overlay.style.backgroundColor = color;
+};
 
-const toggleElementVisibility = (element) => {
-    element.classList.toggle('display_is-visible');
+const closePopup = evt => {
+    const modal = evt.target.parentElement;
+    hideElement(popup, modal);
+    document.removeEventListener('keydown', closeThruEscape);
 };
-const togglePopup = (bgRender) => {
-    popup.classList.toggle('popup_opened');
-    popup.style.backgroundColor = (popup.classList.contains('popup_opened') && bgRender === 'xtra-dark') ? 
-        'rgba(0, 0, 0, .9)' : 'rgba(0, 0, 0, .5)';
+const closeThruOverlay = () => {
+    const siblings = Array.from(overlay.parentElement.childNodes);
+    siblings
+        .filter(node => node.nodeType === Node.ELEMENT_NODE)
+        .forEach(sibling => sibling.classList.remove('display_is-visible'));
+    hideElement(popup);
 };
-const closePopup = (evt) => {
-    togglePopup();
-    const btnParent = evt.target.parentElement;
-    toggleElementVisibility(btnParent);
+const closeThruEscape = (evt) => {
+    console.log(evt);
+    if (evt.key === 'Escape') { 
+        closeThruOverlay()
+    };
 };
-const openProfilePopup = () => {
-    togglePopup();
-    toggleElementVisibility(formProfileEdit);
 
-    const btnClosePopup = formProfileEdit.querySelector('.close-btn');
-    btnClosePopup.addEventListener('click', closePopup);
+const showProfilePopup = () => {
+    showElement(popup, formProfileEdit);
+    renderOverlayBg();
+    document.addEventListener('keydown', closeThruEscape);
 };
-const addInputName = () => {
-    inputName.value = name.textContent;
-};
-const addInputAbout = () => {
-    inputAbout.value = about.textContent;
-};
+
 const submitProfileForm = (evt) => {
     evt.preventDefault();
     name.textContent = inputName.value;
     about.textContent = inputAbout.value;
     closePopup(evt);
 };
-const addCardPopup = () => {
-    togglePopup();
-    toggleElementVisibility(formCardEdit);
+const showAddCardPopup = () => {
+    showElement(popup, formCardEdit)
+    renderOverlayBg();
     inputTitle.value = '';
     inputLink.value = '';
-    const btnClosePopup = formCardEdit.querySelector('.close-btn');
-    btnClosePopup.addEventListener('click', closePopup);
+    document.addEventListener('keydown', closeThruEscape);
 };
 const showImagePopup = (evt) => {
-    togglePopup('xtra-dark');
-    toggleElementVisibility(popupImage);
     const clickedImage = evt.target;
-    const btnClosePopup = popupImage.querySelector('.close-btn');
-    btnClosePopup.addEventListener('click', closePopup);
     popupImage.querySelector('.popup-image__img').src = clickedImage.src
     popupImage.querySelector('.popup-image__title').textContent = clickedImage.parentElement.querySelector('.places__card-title').textContent;
+
+    showElement(popup, popupImage);
+    renderOverlayBg('rgba(0, 0, 0, .9)');
+    document.addEventListener('keydown', closeThruEscape);
 };
-const makeCard = ({name = 'Место N', link = 'https://clck.ru/PeeMN', alt = 'Фотография места'}) => {
+const makeCard = ({name, link, alt = 'Фотография места'}) => {
     const cardTemplate = document.querySelector('#places__card').content;
     const elCard = cardTemplate.cloneNode(true);
     
@@ -128,7 +138,10 @@ const submitNewCard = (evt) => {
 
 initialCards.forEach(makeCard);
 
-btnEditProfile.addEventListener('click', openProfilePopup);
-btnAddCard.addEventListener('click', addCardPopup);
+const closePopupButtons = document.querySelectorAll('.close-btn');
+closePopupButtons.forEach(btnClosePopup => btnClosePopup.addEventListener('click', closePopup));
+btnEditProfile.addEventListener('click', showProfilePopup);
+btnAddCard.addEventListener('click', showAddCardPopup);
 formProfileEdit.addEventListener("submit", submitProfileForm);
 formCardEdit.addEventListener('submit', submitNewCard);
+overlay.addEventListener('click', closeThruOverlay);
