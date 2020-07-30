@@ -1,7 +1,3 @@
-//Александр, большое спасибо за полезные комментарии, как всегда 50% всех полезных 
-// навыков приобретаешь благодаря ревью). Прибрался в коде, благодаря Вам, так самому
-// приятнее смотреть стало. Еще раз - спасибо!
-
 // profile & places sections elements
 const profile = document.querySelector('.profile');
 const name = profile.querySelector('.profile__title');
@@ -109,10 +105,12 @@ const makeCard = ({name, link, alt = 'Фотография места'}) => {
 
 const renderNewCard = card => {
     const newCard = makeCard(card);
-    placesContainer.append(newCard);
+    placesContainer.prepend(newCard);
 };
 
-initialCards.forEach(renderNewCard);
+initialCards.forEach(card => {
+    placesContainer.append(makeCard(card))
+});
 
 closePopupButtons.forEach(btnClosePopup => btnClosePopup.addEventListener('click', closePopup));
 btnEditProfile.addEventListener('click', showProfilePopup);
