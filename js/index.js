@@ -1,35 +1,7 @@
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-        alt: 'фотография гор Архыза',
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-        alt: 'фотография пейзажа Челябинской области',
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-        alt: 'фотография городского пейзажа Иваново',
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-        alt: 'фотография природы Камчатки',
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-        alt: 'фотография железной дороги в лесу в Холмогорах',
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-        alt: 'фотография скал и скованного льдом Байкала',
-    }
-];
+//Александр, большое спасибо за полезные комментарии, как всегда 50% всех полезных 
+// навыков приобретаешь благодаря ревью). Прибрался в коде, благодаря Вам, так самому
+// приятнее смотреть стало. Еще раз - спасибо!
+
 // profile & places sections elements
 const profile = document.querySelector('.profile');
 const name = profile.querySelector('.profile__title');
@@ -60,7 +32,11 @@ const showElement = (...rest) => {
 const renderOverlayBg = (color = 'rgba(0, 0, 0, .5)') => {
     overlay.style.backgroundColor = color;
 };
-
+const renderPopup = (modal, background) => {
+    showElement(popup, modal);
+    renderOverlayBg(background);
+    document.addEventListener('keydown', closeByEscape);
+};
 const closePopup = evt => {
     const modal = evt.target.parentElement;
     hideElement(popup, modal);
@@ -73,42 +49,45 @@ const closeByOverlay = () => {
         .forEach(sibling => sibling.classList.remove('display_is-visible'));
     hideElement(popup);
 };
-const closeByEscape = (evt) => {
+const closeByEscape = evt => {
     if (evt.key === 'Escape') { 
-        closeByOverlay()
-    };
+        closeByOverlay();
+    }
 };
 
 const showProfilePopup = () => {
-    showElement(popup, formProfileEdit);
-    renderOverlayBg();
     inputName.value = name.textContent;
     inputAbout.value = about.textContent;
-    document.addEventListener('keydown', closeByEscape);
+    renderPopup(formProfileEdit);
+};
+const showAddCardPopup = () => {
+    inputTitle.value = '';
+    inputLink.value = '';
+    renderPopup(formCardEdit);
+};
+const showImagePopup = evt => {
+    const clickedImage = evt.target;
+    popupImage.querySelector('.popup-image__img').src = clickedImage.src
+    popupImage.querySelector('.popup-image__title').textContent = clickedImage.parentElement.querySelector('.places__card-title').textContent;
+    renderPopup(popupImage, 'rgba(0, 0, 0, .9)');
 };
 
-const submitProfileForm = (evt) => {
+const submitProfileForm = evt => {
     evt.preventDefault();
     name.textContent = inputName.value;
     about.textContent = inputAbout.value;
     closePopup(evt);
 };
-const showAddCardPopup = () => {
-    showElement(popup, formCardEdit)
-    renderOverlayBg();
-    inputTitle.value = '';
-    inputLink.value = '';
-    document.addEventListener('keydown', closeByEscape);
+const submitNewCard = evt => {
+    evt.preventDefault();
+    const newPlace = { 
+        name: inputTitle.value,
+        link: inputLink.value,
+    };
+    renderNewCard(newPlace);
+    closePopup(evt);
 };
-const showImagePopup = (evt) => {
-    const clickedImage = evt.target;
-    popupImage.querySelector('.popup-image__img').src = clickedImage.src
-    popupImage.querySelector('.popup-image__title').textContent = clickedImage.parentElement.querySelector('.places__card-title').textContent;
 
-    showElement(popup, popupImage);
-    renderOverlayBg('rgba(0, 0, 0, .9)');
-    document.addEventListener('keydown', closeByEscape);
-};
 const makeCard = ({name, link, alt = 'Фотография места'}) => {
     const cardTemplate = document.querySelector('#places__card').content;
     const card = cardTemplate.cloneNode(true);
@@ -119,33 +98,21 @@ const makeCard = ({name, link, alt = 'Фотография места'}) => {
     card.querySelector('.places__card-title').textContent = name;
     
     cardImage.addEventListener('click', showImagePopup);
-    card.querySelector('.places__like-button').addEventListener('click', (evt) => {
+    card.querySelector('.places__like-button').addEventListener('click', evt => {
         evt.target.classList.toggle('places__like-button_state_clicked');
     });
-    card.querySelector('.places__trash-btn').addEventListener('click', (evt) => {
+    card.querySelector('.places__trash-btn').addEventListener('click', evt => {
         evt.target.parentElement.remove();
     });
     return card;
-    // placesContainer.prepend(card);
 };
 
-const renderNewCard = (card) => {
+const renderNewCard = card => {
     const newCard = makeCard(card);
     placesContainer.append(newCard);
 };
 
-const submitNewCard = (evt) => {
-    evt.preventDefault();
-    const newPlace = { 
-        name: inputTitle.value,
-        link: inputLink.value,
-    };
-    renderNewCard(newPlace);
-    closePopup(evt);
-};
-
 initialCards.forEach(renderNewCard);
-
 
 closePopupButtons.forEach(btnClosePopup => btnClosePopup.addEventListener('click', closePopup));
 btnEditProfile.addEventListener('click', showProfilePopup);
