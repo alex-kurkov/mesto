@@ -117,6 +117,6 @@ initialCards.forEach(renderNewCard);
 closePopupButtons.forEach(btnClosePopup => btnClosePopup.addEventListener('click', closePopup));
 btnEditProfile.addEventListener('click', showProfilePopup);
 btnAddCard.addEventListener('click', showAddCardPopup);
-formProfileEdit.addEventListener("submit", submitProfileForm);
+formProfileEdit.addEventListener('submit', submitProfileForm);
 formCardEdit.addEventListener('submit', submitNewCard);
 overlay.addEventListener('click', closeByOverlay);
