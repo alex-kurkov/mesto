@@ -39,10 +39,9 @@ const closePopup = evt => {
     document.removeEventListener('keydown', closeByEscape);
 };
 const closeByOverlay = () => {
-    const siblings = Array.from(overlay.parentElement.childNodes);
+    const siblings = Array.from(overlay.parentElement.children);
     siblings
-        .filter(node => node.nodeType === Node.ELEMENT_NODE)
-        .forEach(sibling => sibling.classList.remove('display_is-visible'));
+        .forEach(sibling => hideElement(sibling));
     hideElement(popup);
 };
 const closeByEscape = evt => {
@@ -112,7 +111,7 @@ initialCards.forEach(card => {
     placesContainer.append(makeCard(card))
 });
 
-closePopupButtons.forEach(btnClosePopup => btnClosePopup.addEventListener('click', closePopup));
+closePopupButtons.forEach(btn => btn.addEventListener('click', closePopup));
 btnEditProfile.addEventListener('click', showProfilePopup);
 btnAddCard.addEventListener('click', showAddCardPopup);
 formProfileEdit.addEventListener('submit', submitProfileForm);

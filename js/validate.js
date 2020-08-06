@@ -23,12 +23,12 @@ const checkInputValidity = (elForm, elInput, setupObj) => {
   }
 };
   
-const toggleButtonState = (inputList, elBtn, setupObj) => {
+const toggleButtonState = (inputList, elBtn, inactiveClass) => {
   if (hasInvalidInput(inputList)) {
-    elBtn.classList.add(setupObj.inactiveButtonClass);
+    elBtn.classList.add(inactiveClass);
     elBtn.setAttribute('disabled', true);
   } else {
-    elBtn.classList.remove(setupObj.inactiveButtonClass);
+    elBtn.classList.remove(inactiveClass);
     elBtn.removeAttribute('disabled');
   }
 };
@@ -36,11 +36,11 @@ const toggleButtonState = (inputList, elBtn, setupObj) => {
 const setEventListeners = (elForm, setupObj) => {
   const inputList = Array.from(elForm.querySelectorAll(setupObj.inputSelector));
   const elBtn = elForm.querySelector(setupObj.formButtonSelector);
-  toggleButtonState(inputList, elBtn, setupObj);
+  toggleButtonState(inputList, elBtn, setupObj.inactiveButtonClass);
   inputList.forEach(elInput => {
     elInput.addEventListener('input', () => {
       checkInputValidity(elForm, elInput, setupObj);
-      toggleButtonState(inputList, elBtn, setupObj);
+      toggleButtonState(inputList, elBtn, setupObj.inactiveButtonClass);
     });
     elInput.addEventListener('keydown', evt => {
       preventUnvalidSubmit(evt, setupObj.formSelector, setupObj.inputSelector);
@@ -56,7 +56,7 @@ const preventUnvalidSubmit = (evt, formSelector, inputSelector) => {
 };
 
 const enableValidation = (setupObj) => {
-  const formList = Array.from(document.querySelectorAll(`${setupObj.formSelector}`));
+  const formList = Array.from(document.querySelectorAll(setupObj.formSelector));
   formList.forEach(elForm => {
     setEventListeners(elForm, setupObj);
   });
