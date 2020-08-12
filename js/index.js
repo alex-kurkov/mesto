@@ -1,3 +1,20 @@
+import initialCards from './initial-cards.js';
+import { FormValidator } from './formValidator.js';
+
+const setupObj = {
+    inputSelector: '.form__input',
+    formButtonSelector: '.form__btn',
+    inactiveButtonClass: 'form__btn_disabled',
+    inputErrorClass: 'form__input_type_error',
+    errorClass: 'form__error_visible'
+  };
+const formList = Array.from(document.querySelectorAll('.form'));
+formList.forEach(form => {
+    const newForm = new FormValidator(setupObj, form)
+    newForm.enableValidation();
+})
+
+
 // profile & places sections elements
 const profile = document.querySelector('.profile');
 const name = profile.querySelector('.profile__title');
