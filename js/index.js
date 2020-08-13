@@ -1,5 +1,4 @@
-import { initialCards, setupObj, elements as el, formList } from './setup.js'; // constants & data
-import { FormValidator } from './formValidator.js'; // validator fn
+import { initialCards, setupObj, elements as el, /* formList  */} from './setup.js';
 import { Card } from './card.js'; 
 import { 
     renderPopup, 
@@ -28,11 +27,13 @@ const submitNewCard = evt => {
     renderNewCard(generateGridCard(newPlace), 'begin');
     closePopup(evt);
 };
+// валидация формы решил подключать в момент рендера попапа с формой - 
+// соответственно импорт класса валидации - в файле с функциями
 
-formList.forEach(form => {
+/* formList.forEach(form => {
     const newForm = new FormValidator(setupObj, form)
     newForm.enableValidation();
-});
+}); */
 
 initialCards.forEach(card => {
     renderNewCard(generateGridCard(card));

@@ -1,4 +1,5 @@
-import { elements as el } from './setup.js'
+import { setupObj, elements as el } from './setup.js'
+import { FormValidator } from './formValidator.js';
 
 export const renderPopup = (modal, background) => {
     showElement(el.popup, modal);
@@ -34,11 +35,16 @@ export const closeByEscape = evt => {
 export const showProfilePopup = () => {
     el.inputName.value = el.name.textContent;
     el.inputAbout.value = el.about.textContent;
+    const activeForm = new FormValidator(setupObj, el.formProfileEdit.querySelector('.form'));
+    activeForm.enableValidation();
     renderPopup(el.formProfileEdit);
+
 };
 export const showAddCardPopup = () => {
     el.inputTitle.value = '';
     el.inputLink.value = '';
+    const activeForm = new FormValidator(setupObj, el.formCardEdit.querySelector('.form'));
+    activeForm.enableValidation();
     renderPopup(el.formCardEdit);
 };
 export const showImagePopup = evt => {

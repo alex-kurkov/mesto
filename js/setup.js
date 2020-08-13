@@ -25,7 +25,7 @@ const elements = {
   inputLink: document.querySelector('.form__input_txt_link'),
 };
 
-const formList = Array.from(document.querySelectorAll('.form'));
+/* const formList = Array.from(document.querySelectorAll('.form')); */
 
 const initialCards = [
   {
@@ -59,4 +59,4 @@ const initialCards = [
       alt: 'фотография скал и скованного льдом Байкала',
   }
 ];
-  export { setupObj, elements, initialCards, formList };
+  export { setupObj, elements, initialCards, /* formList  */};
