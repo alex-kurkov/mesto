@@ -1,16 +1,10 @@
-import { initialCards, setupObj, elements as el, /* formList  */} from './setup.js';
+import { initialCards, setupObj, elements as el } from './setup.js';
 import { Card } from './card.js'; 
+import { FormValidator } from './formValidator.js';
 import { 
     renderPopup, 
-    hideElement, 
-    showElement, 
-    renderOverlayBg ,
     closePopup,
     closeByOverlay,
-    closeByEscape,
-    showProfilePopup,
-    showAddCardPopup,
-    showImagePopup,
     submitProfileForm,
     renderNewCard,
 } from './functions.js';
@@ -27,13 +21,24 @@ const submitNewCard = evt => {
     renderNewCard(generateGridCard(newPlace), 'begin');
     closePopup(evt);
 };
-// валидация формы решил подключать в момент рендера попапа с формой - 
-// соответственно импорт класса валидации - в файле с функциями
 
-/* formList.forEach(form => {
-    const newForm = new FormValidator(setupObj, form)
-    newForm.enableValidation();
-}); */
+// вообще, я бы лучше и эти функции вынес в functions.js
+// и там импортировал класс валидатора формы...
+const showProfilePopup = () => {
+    el.inputName.value = el.name.textContent;
+    el.inputAbout.value = el.about.textContent;
+    const activeForm = new FormValidator(setupObj, el.formProfileEdit.querySelector('.form'));
+    activeForm.enableValidation();
+    renderPopup(el.formProfileEdit);
+
+};
+const showAddCardPopup = () => {
+    el.inputTitle.value = '';
+    el.inputLink.value = '';
+    const activeForm = new FormValidator(setupObj, el.formCardEdit.querySelector('.form'));
+    activeForm.enableValidation();
+    renderPopup(el.formCardEdit);
+};
 
 initialCards.forEach(card => {
     renderNewCard(generateGridCard(card));

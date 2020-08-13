@@ -1,5 +1,4 @@
 import { setupObj, elements as el } from './setup.js'
-import { FormValidator } from './formValidator.js';
 
 export const renderPopup = (modal, background) => {
     showElement(el.popup, modal);
@@ -32,21 +31,7 @@ export const closeByEscape = evt => {
         closeByOverlay();
     }
 };
-export const showProfilePopup = () => {
-    el.inputName.value = el.name.textContent;
-    el.inputAbout.value = el.about.textContent;
-    const activeForm = new FormValidator(setupObj, el.formProfileEdit.querySelector('.form'));
-    activeForm.enableValidation();
-    renderPopup(el.formProfileEdit);
 
-};
-export const showAddCardPopup = () => {
-    el.inputTitle.value = '';
-    el.inputLink.value = '';
-    const activeForm = new FormValidator(setupObj, el.formCardEdit.querySelector('.form'));
-    activeForm.enableValidation();
-    renderPopup(el.formCardEdit);
-};
 export const showImagePopup = evt => {
     const clickedImage = evt.target;
     el.popupImage.querySelector('.popup-image__img').src = clickedImage.src
@@ -60,6 +45,7 @@ export const submitProfileForm = evt => {
     el.about.textContent = el.inputAbout.value;
     closePopup(evt);
 };
+
 export const renderNewCard = (card, target) => {
     if (target === 'begin') {
         el.placesContainer.prepend(card);
