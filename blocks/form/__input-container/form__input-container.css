@@ -2,12 +2,12 @@
     width: 100%;
     border: none;
     padding: 0;
-    margin: 0 0 48px 0;
+    margin: 0 0 24px 0;
     box-sizing: border-box;
 }
 
 @media (max-width: 520px) {
     .form__input-container  {
-        margin-bottom: 36px;
+        margin-bottom: 12px;
     }
 }

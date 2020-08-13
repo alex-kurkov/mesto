@@ -1,4 +1,4 @@
-import { setupObj, elements as el } from './setup.js'
+import { elements as el } from './setup.js'
 
 export const renderPopup = (modal, background) => {
     showElement(el.popup, modal);
@@ -7,10 +7,10 @@ export const renderPopup = (modal, background) => {
 };
 
 export const hideElement = (...rest) => {
-    rest.forEach(el => el.classList.remove('display_is-visible'));
+    rest.forEach(el => el.classList.remove('popup_opened'));
 };
 export const showElement = (...rest) => {
-    rest.forEach(el => el.classList.add('display_is-visible'));
+    rest.forEach(el => el.classList.add('popup_opened'));
 };
 export const renderOverlayBg = (color = 'rgba(0, 0, 0, .5)') => {
     el.overlay.style.backgroundColor = color;

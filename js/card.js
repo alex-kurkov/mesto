@@ -1,5 +1,4 @@
 import { showImagePopup } from './functions.js';
-import { elements as el } from './setup.js';
 
 export class Card {
     constructor(data, templateSelector) {

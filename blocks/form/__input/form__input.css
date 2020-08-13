@@ -15,11 +15,6 @@
     color: #000;
 }
 
-.form__input:last-of-type {
-    margin-bottom: 0;
-}
-
-/* от себя состояние focus добавил*/
 .form__input:focus {
     outline: none;
     border-bottom: 1px solid #00f;
