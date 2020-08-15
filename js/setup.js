@@ -1,9 +1,18 @@
-const setupObj = {
+const cssClasses = {
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__error_visible',
+  openedClass: 'popup_opened',
+  inactiveButtonClass: 'form__btn_disabled',
+  clickedLikeBtnClass: 'places__like-button_state_clicked',
+  cardTemplateSelector: '#places__card',
+  formSelector: '.form',
   inputSelector: '.form__input',
   formButtonSelector: '.form__btn',
-  inactiveButtonClass: 'form__btn_disabled',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__error_visible'
+  cardTitleSelector: '.places__card-title',
+  cardImageSelector: '.places__card-image',
+  likeBtnSelector: '.places__like-button',
+  trashBtnSelector: '.places__trash-btn',
+  closePopupBtnSelector: '.close-btn',
 };
 
 const elements = {
@@ -15,14 +24,16 @@ const elements = {
   placesContainer: document.querySelector('.places__container'),
   popup: document.querySelector('.popup'),
   popupImage: document.querySelector('.popup-image'),
+  popupImageImg: document.querySelector('.popup-image__img'),
+  popupImageTitle: document.querySelector('.popup-image__title'),
   overlay: document.querySelector('.overlay'),
-  closePopupButtons: document.querySelectorAll('.close-btn'),
   formProfileEdit: document.querySelector('.popup-form_type_profile-edit'),
   inputName: document.querySelector('.form__input_txt_name'),
   inputAbout: document.querySelector('.form__input_txt_about'),
   formCardEdit: document.querySelector('.popup-form_type_card-edit'),
   inputTitle: document.querySelector('.form__input_txt_title'),
   inputLink: document.querySelector('.form__input_txt_link'),
+
 };
 
 const initialCards = [
@@ -57,4 +68,4 @@ const initialCards = [
       alt: 'фотография скал и скованного льдом Байкала',
   }
 ];
-  export { setupObj, elements, initialCards };
+  export { cssClasses, elements, initialCards };

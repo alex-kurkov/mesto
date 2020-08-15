@@ -1,16 +1,23 @@
-import { initialCards, setupObj, elements as el } from './setup.js';
+import { initialCards, cssClasses, elements as el } from './setup.js';
 import { Card } from './card.js'; 
-import { FormValidator } from './formValidator.js';
-import { 
-    renderPopup, 
-    closePopup,
-    closeByOverlay,
-    submitProfileForm,
-    renderNewCard,
-} from './functions.js';
+import { Popup } from './popup.js';
 
-const generateGridCard = data => new Card(data, '#places__card').makeCard();
+const popup = new Popup;
 
+const generateGridCard = data => new Card(data, cssClasses.cardTemplateSelector, popup.showImagePopup).makeCard();
+
+const renderNewCard = (card, target) => {
+    if (target === 'begin') {
+        el.placesContainer.prepend(card);
+    } 
+    el.placesContainer.append(card)
+};
+const submitProfileForm = evt => {
+    evt.preventDefault();
+    el.name.textContent = el.inputName.value;
+    el.about.textContent = el.inputAbout.value;
+    popup.closePopup(evt);
+};
 const submitNewCard = evt => {
     evt.preventDefault();
     const newPlace = { 
@@ -19,37 +26,14 @@ const submitNewCard = evt => {
         alt: 'Фотография места',
     };
     renderNewCard(generateGridCard(newPlace), 'begin');
-    closePopup(evt);
-};
-
-// Ирина, огромное спасибо Вам за подробное объяснение! Во время ревью всегда узнаешь
-// не менее половины полезной практически значимой информации. Так и сейчас:) 
-// Попробую после получения зачета поэкспериментировать и выделить в отдельные классы 
-// попап и форму и все методы перенести в эти классы. 
-// Еще раз - большое спасибо за Вашу работу!
-const showProfilePopup = () => {
-    el.inputName.value = el.name.textContent;
-    el.inputAbout.value = el.about.textContent;
-    const activeForm = new FormValidator(setupObj, el.formProfileEdit.querySelector('.form'));
-    activeForm.enableValidation();
-    renderPopup(el.formProfileEdit);
-
-};
-const showAddCardPopup = () => {
-    el.inputTitle.value = '';
-    el.inputLink.value = '';
-    const activeForm = new FormValidator(setupObj, el.formCardEdit.querySelector('.form'));
-    activeForm.enableValidation();
-    renderPopup(el.formCardEdit);
+    popup.closePopup(evt);
 };
 
 initialCards.forEach(card => {
     renderNewCard(generateGridCard(card));
 });
 
-el.closePopupButtons.forEach(btn => btn.addEventListener('click', closePopup));
-el.btnEditProfile.addEventListener('click', showProfilePopup);
-el.btnAddCard.addEventListener('click', showAddCardPopup);
+el.btnEditProfile.addEventListener('click', popup.showProfilePopup);
+el.btnAddCard.addEventListener('click', popup.showAddCardPopup);
 el.formProfileEdit.addEventListener('submit', submitProfileForm);
 el.formCardEdit.addEventListener('submit', submitNewCard);
-el.overlay.addEventListener('click', closeByOverlay);
