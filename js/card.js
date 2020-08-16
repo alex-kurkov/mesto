@@ -23,8 +23,6 @@ export class Card {
             .content
             .cloneNode(true);
     }
-        
-    }
 
     makeCard() {
         const cardElement = this._getTemplateCard();
