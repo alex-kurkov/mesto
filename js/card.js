@@ -23,7 +23,6 @@ export class Card {
             .content
             .cloneNode(true);
     }
-    _showImagePopup() {
         
     }
 
