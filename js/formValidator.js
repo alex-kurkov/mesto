@@ -15,14 +15,14 @@ export class FormValidator {
         elInput.classList.add(this._inputErrorClass);
         elError.classList.add(this._errorClass);
         elError.textContent = elInput.validationMessage;
-      };
+    };
         
     _hideInputError(elInput) {
         const elError = this._formEl.querySelector(`#${elInput.id}-error`);
         elInput.classList.remove(this._inputErrorClass);
         elError.classList.remove(this._errorClass);
         elError.textContent = '';
-      };
+    };
 
     _hasInvalidInput() {
         return this._inputList.some(el => !el.validity.valid);
@@ -44,7 +44,7 @@ export class FormValidator {
           this._elBtn.classList.remove(this._inactiveButtonClass);
           this._elBtn.removeAttribute('disabled');
         }
-      };
+    };
 
     _preventUnvalidSubmit(evt) {
         if (evt.key === 'Enter' && this._hasInvalidInput()) {

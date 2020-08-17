@@ -15,25 +15,42 @@ const cssClasses = {
   closePopupBtnSelector: '.close-btn',
 };
 
-const elements = {
-  profile: document.querySelector('.profile'),
-  name: document.querySelector('.profile__title'),
-  about: document.querySelector('.profile__profession'),
-  btnEditProfile: document.querySelector('.profile__edit-button'),
-  btnAddCard: document.querySelector('.profile__add-button'),
-  placesContainer: document.querySelector('.places__container'),
-  popup: document.querySelector('.popup'),
-  popupImage: document.querySelector('.popup-image'),
-  popupImageImg: document.querySelector('.popup-image__img'),
-  popupImageTitle: document.querySelector('.popup-image__title'),
-  overlay: document.querySelector('.overlay'),
-  formProfileEdit: document.querySelector('.popup-form_type_profile-edit'),
-  inputName: document.querySelector('.form__input_txt_name'),
-  inputAbout: document.querySelector('.form__input_txt_about'),
-  formCardEdit: document.querySelector('.popup-form_type_card-edit'),
-  inputTitle: document.querySelector('.form__input_txt_title'),
-  inputLink: document.querySelector('.form__input_txt_link'),
+const profile = document.querySelector('.profile');
+const name = profile.querySelector('.profile__title');
+const about = profile.querySelector('.profile__profession');
+const btnEditProfile = profile.querySelector('.profile__edit-button');
+const btnAddCard = profile.querySelector('.profile__add-button');
+const placesContainer = document.querySelector('.places__container');
+const popup = document.querySelector('.popup');
+const popupImage = popup.querySelector('.popup-image');
+const popupImageImg = popupImage.querySelector('.popup-image__img');
+const popupImageTitle = popupImage.querySelector('.popup-image__title');
+const overlay = popup.querySelector('.overlay');
+const formProfileEdit = popup.querySelector('.popup-form_type_profile-edit');
+const inputName = formProfileEdit.querySelector('.form__input_txt_name');
+const inputAbout = formProfileEdit.querySelector('.form__input_txt_about');
+const formCardEdit = popup.querySelector('.popup-form_type_card-edit');
+const inputTitle = formCardEdit.querySelector('.form__input_txt_title');
+const inputLink = formCardEdit.querySelector('.form__input_txt_link');
 
+const elements = {
+  profile,
+  name,
+  about,
+  btnEditProfile,
+  btnAddCard,
+  placesContainer,
+  popup,
+  popupImage,
+  popupImageImg,
+  popupImageTitle,
+  overlay,
+  formProfileEdit,
+  inputName,
+  inputAbout,
+  formCardEdit,
+  inputTitle,
+  inputLink,
 };
 
 const initialCards = [
