@@ -1,5 +1,4 @@
 import { cssClasses, elements as el } from './setup.js';
-import { FormValidator } from './formValidator.js';
 
 export class Popup {
     constructor() {
@@ -57,16 +56,11 @@ export class Popup {
     showProfilePopup = () => {
         el.inputName.value = el.name.textContent;
         el.inputAbout.value = el.about.textContent;
-        const activeForm = new FormValidator(cssClasses, el.formProfileEdit.querySelector(cssClasses.formSelector));
-        activeForm.enableValidation();
         this._renderPopup(el.formProfileEdit);
-    
     };
     showAddCardPopup = () => {
         el.inputTitle.value = '';
         el.inputLink.value = '';
-        const activeForm = new FormValidator(cssClasses, el.formCardEdit.querySelector(cssClasses.formSelector));
-        activeForm.enableValidation();
         this._renderPopup(el.formCardEdit);
     };
 };

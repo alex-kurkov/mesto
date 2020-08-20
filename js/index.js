@@ -1,8 +1,15 @@
 import { initialCards, cssClasses, elements as el } from './setup.js';
 import { Card } from './card.js'; 
 import { Popup } from './popup.js';
+import { FormValidator } from './formValidator.js';
 
 const popup = new Popup;
+
+const formProfileEditValidation = new FormValidator(cssClasses, el.formProfileEdit.querySelector(cssClasses.formSelector));
+formProfileEditValidation.enableValidation();
+
+const formCardEditValidation = new FormValidator(cssClasses, el.formCardEdit.querySelector(cssClasses.formSelector));
+formCardEditValidation.enableValidation();
 
 const generateGridCard = data => new Card(data, cssClasses.cardTemplateSelector, popup.showImagePopup).makeCard();
 
@@ -28,12 +35,20 @@ const submitNewCard = evt => {
     renderNewCard(generateGridCard(newPlace), 'begin');
     popup.closePopup(evt);
 };
+const showProfilePopup = () => {
+    popup.showProfilePopup();
+    formProfileEditValidation.hideErrors();
+};
+const showAddCardPopup = () => {
+    popup.showAddCardPopup();
+    formCardEditValidation.hideErrors();
+}
 
 initialCards.forEach(card => {
     renderNewCard(generateGridCard(card));
 });
 
-el.btnEditProfile.addEventListener('click', popup.showProfilePopup);
-el.btnAddCard.addEventListener('click', popup.showAddCardPopup);
+el.btnEditProfile.addEventListener('click', showProfilePopup);
+el.btnAddCard.addEventListener('click', showAddCardPopup);
 el.formProfileEdit.addEventListener('submit', submitProfileForm);
 el.formCardEdit.addEventListener('submit', submitNewCard);

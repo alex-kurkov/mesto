@@ -52,7 +52,7 @@ export class FormValidator {
         }
       };
 
-    _setEventListeners() {
+    enableValidation() {
         this._toggleButtonState();
         this._inputList.forEach(elInput => {
           this._checkInputValidity(elInput);
@@ -64,9 +64,9 @@ export class FormValidator {
             this._preventUnvalidSubmit(evt);
           });
         });
-    }
+    };
 
-    enableValidation() {
-        this._setEventListeners();
-    }
+    hideErrors() {
+        this._inputList.forEach(input => this._hideInputError(input));
+    };
 }
