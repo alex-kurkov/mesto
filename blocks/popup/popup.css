@@ -1,10 +1,11 @@
 .popup {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
-    visibility: collapse;
+    visibility: hidden;
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -13,4 +14,5 @@
     left: 0;
     right: 0;
     z-index: 1;
+    background: rgba(0, 0, 0, .5);
 }

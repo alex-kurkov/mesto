@@ -1,0 +1,21 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "--------------\r https://alex-kurkov.github.io/mesto/index.html",
+  "main": "index.js",
+  "scripts": {
+    "build": "rd /s /q dist && webpack",
+    "dev": "webpack-dev-server --open --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-kurkov/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-kurkov/mesto/issues"
+  },
+  "homepage": "https://github.com/alex-kurkov/mesto#readme",
+  "devDependencies": {}
+}

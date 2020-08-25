@@ -31,8 +31,10 @@ export class FormValidator {
     _checkInputValidity(elInput) {
         if (!elInput.validity.valid) {
             this._showInputError(elInput);
+            this._toggleButtonState();
         } else {
-            this._hideInputError(elInput);
+            this._hideInputError(elInput)
+            this._toggleButtonState();
         }
     };
 
@@ -53,12 +55,10 @@ export class FormValidator {
       };
 
     enableValidation() {
-        this._toggleButtonState();
         this._inputList.forEach(elInput => {
           this._checkInputValidity(elInput);
           elInput.addEventListener('input', () => {
             this._checkInputValidity(elInput);
-            this._toggleButtonState();
           });
           elInput.addEventListener('keydown', evt => {
             this._preventUnvalidSubmit(evt);
@@ -67,6 +67,7 @@ export class FormValidator {
     };
 
     hideErrors() {
+        this._toggleButtonState();
         this._inputList.forEach(input => this._hideInputError(input));
     };
 }

@@ -12,6 +12,7 @@
     padding: 0;
     cursor: pointer;
     transform: rotate(45deg);
+    z-index: 999;
 }
 
 .close-btn:hover {

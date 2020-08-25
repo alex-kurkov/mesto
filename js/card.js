@@ -1,12 +1,12 @@
 import { cssClasses } from './setup.js';
 
 export class Card {
-    constructor(data, templateSelector, showPopup) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._alt = data.alt;
         this._templateSelector = templateSelector;
-        this._showPopup = showPopup;
+        this._handleCardClick = handleCardClick;
     }
 
     _toggleLike(evt) {
@@ -32,7 +32,7 @@ export class Card {
         cardImage.alt = this._alt;
         cardElement.querySelector(cssClasses.cardTitleSelector).textContent = this._name;
         
-        cardImage.addEventListener('click', this._showPopup);
+        cardImage.addEventListener('click', this._handleCardClick);
         cardElement.querySelector(cssClasses.likeBtnSelector).addEventListener('click', this._toggleLike);
         cardElement.querySelector(cssClasses.trashBtnSelector).addEventListener('click',  this._removeCard);
         return cardElement;

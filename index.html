@@ -40,19 +40,18 @@
     </footer>
     
     <div class="popup">
-        <div class="overlay"></div>
         <div class="popup-form popup-form_type_profile-edit">
             <button class="close-btn" type="button" title="Закрыть"></button>
             <form class="form" method="post" novalidate>
                 <fieldset class="form__input-container">
                     <legend class="form__title">Редактировать профиль</legend>
                     <label class="form__field">
-                        <input class="form__input form__input_txt_name" type="text" id="name-input" name="name-input" 
+                        <input class="form__input form__input_txt_name" type="text" id="name-input" name="name" 
                             value="Your name" placeholder="Введите имя" minlength="2" maxlength="40" required>
                         <span class="form__error" id="name-input-error"></span>
                     </label>
                     <label class="form__field">
-                        <input class="form__input form__input_txt_about" type="text" id="about-input" name="about-input" 
+                        <input class="form__input form__input_txt_about" type="text" id="about-input" name="about" 
                             value="about" placeholder="О Вас" minlength="2" maxlength="200" required>
                         <span class="form__error" id="about-input-error"></span>
                     </label>
@@ -76,7 +75,7 @@
                         <span class="form__error" id="link-input-error"></span>
                     </label>
                 </fieldset>
-                <button class="form__btn" type="submit">Создать</button>
+                <button class="form__btn" type="submit" disabled>Создать</button>
             </form>
         </div>
         <div class="popup-image">
