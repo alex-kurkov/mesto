@@ -8,7 +8,7 @@ _Yandex.Practicum student_
 ### **Content**
 ---------------------
 
-Educational site applying basic JS features.
+Educational site applying basic JS features: modules, classes, eventHandlers
 
 ### **Key features**
 ---------------------

@@ -7,15 +7,17 @@
     border-bottom: 1px solid #545454;
 }
 
-@media (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
     .header {
         max-width: calc(100% - 120px);
+    }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .header {
         max-width: 100%;
         padding-top: 28px;
         padding-bottom: 32px;
         margin: 0 0 40px 0;
+    }
 }

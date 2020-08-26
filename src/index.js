@@ -1,10 +1,11 @@
-import { initialCards, cssClasses, cssSelectors as sel, elements as el } from './utils/constants.js';
-import Card from './components/Card.js'; 
-import FormValidator from './components/FormValidator.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import UserInfo from './components/UserInfo.js';
-import Section from './components/Section.js';
+import './pages/index.css';
+import { initialCards, cssClasses, cssSelectors as sel, elements as el } from './js/utils/constants.js';
+import Card from './js/components/Card.js'; 
+import FormValidator from './js/components/FormValidator.js';
+import PopupWithImage from './js/components/PopupWithImage.js';
+import PopupWithForm from './js/components/PopupWithForm.js';
+import UserInfo from './js/components/UserInfo.js';
+import Section from './js/components/Section.js';
 
 const popupWithImage = new PopupWithImage('.popup-image');
 
