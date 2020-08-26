@@ -1,8 +1,8 @@
-import { cssClasses } from './setup.js';
+import { cssClasses, cssSelectors as sel } from '../utils/constants.js';
 
-export class Card {
+export default class Card {
     constructor(data, templateSelector, handleCardClick) {
-        this._name = data.name;
+        this._place = data.place;
         this._link = data.link;
         this._alt = data.alt;
         this._templateSelector = templateSelector;
@@ -24,17 +24,17 @@ export class Card {
             .cloneNode(true);
     }
 
-    makeCard() {
+    makeCard = ({place = this._place, link = this._link, alt = this._alt}) => {
         const cardElement = this._getTemplateCard();
-        const cardImage = cardElement.querySelector(cssClasses.cardImageSelector);
+        const cardImage = cardElement.querySelector(sel.cardImageSelector);
 
-        cardImage.src = this._link;
-        cardImage.alt = this._alt;
-        cardElement.querySelector(cssClasses.cardTitleSelector).textContent = this._name;
+        cardImage.src = link;
+        cardImage.alt = alt;
+        cardElement.querySelector(sel.cardTitleSelector).textContent = place;
         
         cardImage.addEventListener('click', this._handleCardClick);
-        cardElement.querySelector(cssClasses.likeBtnSelector).addEventListener('click', this._toggleLike);
-        cardElement.querySelector(cssClasses.trashBtnSelector).addEventListener('click',  this._removeCard);
+        cardElement.querySelector(sel.likeBtnSelector).addEventListener('click', this._toggleLike);
+        cardElement.querySelector(sel.trashBtnSelector).addEventListener('click',  this._removeCard);
         return cardElement;
     }
 };

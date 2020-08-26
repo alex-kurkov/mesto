@@ -1,48 +1,68 @@
-import { initialCards, cssClasses, elements as el } from './setup.js';
-import { Card } from './card.js'; 
-import { FormValidator } from './formValidator.js';
+import { initialCards, cssClasses, cssSelectors as sel, elements as el } from './utils/constants.js';
+import Card from './components/Card.js'; 
+import FormValidator from './components/FormValidator.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import PopupWithForm from './components/PopupWithForm.js';
-/*import {} from ''; */
+import UserInfo from './components/UserInfo.js';
+import Section from './components/Section.js';
 
 const popupWithImage = new PopupWithImage('.popup-image');
-const popupCardEdit = new PopupWithForm('.popup-form_type_card-edit', (evt) => {
+
+const placesCard = new Card({}, sel.cardTemplateSelector, popupWithImage.open);
+
+const cardsSection = new Section({
+    items: initialCards, 
+    renderer: data => placesCard.makeCard(data)
+}, sel.placesContainerSelector, popupWithImage.open);
+
+const currentUserInfo = new UserInfo({ 
+    nameSelector: '.profile__title', 
+    aboutSelector: '.profile__profession',
+});
+const popupCardEdit = new PopupWithForm(sel.cardEditFormSelector, (evt) => {
     evt.preventDefault();
-    const obj = popupCardEdit._getInputValues();
-    const newPlace = { 
-        name: obj.place,
-        link: obj.link,
+
+    const inputData = popupCardEdit._getInputValues();
+    const newPlaceData = { 
+        place: inputData.place,
+        link: inputData.link,
         alt: 'Фотография места',
     };
-    renderNewCard(generateGridCard(newPlace), 'begin');
+    const newCardElement = placesCard.makeCard(newPlaceData);
+    
+    cardsSection.addItem(newCardElement, 'begin');
     popupCardEdit.close();
 });
-const popupProfileEdit = new PopupWithForm('.popup-form_type_profile-edit', (evt) => {
+const popupProfileEdit = new PopupWithForm(sel.profileEditFormSelector, (evt) => {
     evt.preventDefault();
-    const obj = popupProfileEdit._getInputValues();    
-        el.name.textContent = obj.name;
-        el.about.textContent = obj.about;
-        popupProfileEdit.close()
+    const inputData = popupProfileEdit._getInputValues();
+    currentUserInfo.setUserInfo(inputData);
+    popupProfileEdit.close()
 });
 
-const formProfileEditValidation = new FormValidator(cssClasses, el.formProfileEdit.querySelector(cssClasses.formSelector));
+const formProfileEditValidation = new FormValidator({
+    inputSelector: sel.inputSelector,
+    formButtonSelector: sel.formButtonSelector,
+    inactiveButtonClass: cssClasses.inactiveButtonClass,
+    inputErrorClass: cssClasses.inputErrorClass,
+    errorClass: cssClasses.errorClass,
+}, el.profileEditForm);
 formProfileEditValidation.enableValidation();
 
-const formCardEditValidation = new FormValidator(cssClasses, el.formCardEdit.querySelector(cssClasses.formSelector));
+const formCardEditValidation = new FormValidator({
+    inputSelector: sel.inputSelector,
+    formButtonSelector: sel.formButtonSelector,
+    inactiveButtonClass: cssClasses.inactiveButtonClass,
+    inputErrorClass: cssClasses.inputErrorClass,
+    errorClass: cssClasses.errorClass,
+}, el.cardEditForm);
 formCardEditValidation.enableValidation();
 
-const generateGridCard = data => new Card(data, cssClasses.cardTemplateSelector, popupWithImage.open).makeCard();
-
-const renderNewCard = (card, target) => {
-    if (target === 'begin') {
-        el.placesContainer.prepend(card);
-    } 
-    el.placesContainer.append(card)
-};
+cardsSection.renderInitialItems();
 
 const showProfilePopup = () => {
-    el.inputName.value = el.name.textContent;
-    el.inputAbout.value = el.about.textContent;
+    const data = currentUserInfo.getUserInfo()
+    popupProfileEdit.setInitialInputValues(data);
     popupProfileEdit.open();
     formProfileEditValidation.hideErrors();
 };
@@ -50,10 +70,6 @@ const showAddCardPopup = () => {
     popupCardEdit.open();
     formCardEditValidation.hideErrors();
 }
-
-initialCards.forEach(card => {
-    renderNewCard(generateGridCard(card));
-});
 
 el.btnEditProfile.addEventListener('click', showProfilePopup);
 el.btnAddCard.addEventListener('click', showAddCardPopup);

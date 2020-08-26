@@ -1,14 +1,9 @@
-/* import { 
-    cssClasses,
-    cssSelectors as cssSel,
-    elements as el,
-} from '../utils/constants.js'; */
-import { cssClasses, elements as el } from '../setup.js';
+import { cssClasses, cssSelectors as sel, elements as el } from '../utils/constants.js';
 
 export default class Popup {
     constructor(popupSelector) {
         this._modal = el.popup.querySelector(popupSelector);
-        this._closeBtn = this._modal.querySelector('.close-btn');
+        this._closeBtn = this._modal.querySelector(sel.closePopupBtnSelector);
     }
 
     _hideElement = (...rest) => {
@@ -37,7 +32,7 @@ export default class Popup {
         el.popup.removeEventListener('click', this._closeByOverlay);
         this._closeBtn.removeEventListener('click', this.close.bind(this));
     };
-
+    
     close() {
         this._hideElement(el.popup, this._modal);
         this._removeEventListeners();

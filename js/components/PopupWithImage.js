@@ -1,6 +1,5 @@
 import Popup from './Popup.js';
-import { cssClasses, elements as el } from '../setup.js';
-/* import { elements as el, cssSelectors, cssClasses } from '../utils/constants.js'; */
+import { cssSelectors as sel, elements as el } from '../utils/constants.js';
 
 export default class PopupWithImage extends Popup {
     constructor(popupSelector){
@@ -11,10 +10,10 @@ export default class PopupWithImage extends Popup {
     open = (evt) => {
         super.open();
         const clickedImage = evt.target;
-        el.popupImageImg.src = clickedImage.src
-        el.popupImageTitle.textContent = clickedImage
+        el.popupImage_Img.src = clickedImage.src
+        el.popupImage_Title.textContent = clickedImage
             .parentElement
-            .querySelector(cssClasses.cardTitleSelector)
+            .querySelector(sel.cardTitleSelector)
             .textContent;
         el.popup.style.background = this._color;
     };
