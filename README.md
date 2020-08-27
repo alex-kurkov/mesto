@@ -1,6 +1,6 @@
 # **Project 4 Mesto**
 --------------
-https://alex-kurkov.github.io/mesto/index.html
+https://alex-kurkov.github.io/mesto
 
 assembled and tuned by **Alex Kurkov**,
 _Yandex.Practicum student_
