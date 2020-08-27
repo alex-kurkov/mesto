@@ -7,14 +7,10 @@ export default class PopupWithImage extends Popup {
         this._color = 'rgba(0, 0, 0, .9)';
     }
 
-    open = (evt) => {
+    open = ({ link, place }) => {
         super.open();
-        const clickedImage = evt.target;
-        el.popupImage_Img.src = clickedImage.src
-        el.popupImage_Title.textContent = clickedImage
-            .parentElement
-            .querySelector(sel.cardTitleSelector)
-            .textContent;
+        el.popupImage_Img.src = link;
+        el.popupImage_Title.textContent = place;
         el.popup.style.background = this._color;
     };
 }

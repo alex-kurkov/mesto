@@ -7,6 +7,7 @@ const cssClasses = {
 };
 
 const cssSelectors = {
+  cardSelector: '.places__card',
   cardTemplateSelector: '#places__card',
   formSelector: '.form',
   inputSelector: '.form__input',
@@ -61,7 +62,7 @@ const initialCards = [
       alt: 'фотография городского пейзажа Иваново',
   },
   {
-      name: 'Камчатка',
+      place: 'Камчатка',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
       alt: 'фотография природы Камчатки',
   },

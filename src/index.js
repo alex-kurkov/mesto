@@ -8,13 +8,23 @@ import UserInfo from './js/components/UserInfo.js';
 import Section from './js/components/Section.js';
 
 const popupWithImage = new PopupWithImage('.popup-image');
+// Антон, спасибо большое за качественное ревью - не устаю повторять, что 
+// 50% практических навыков и нухных знаний мы получаем во время работы над ошибками!
+// особенно пришлось поплутать с методами карточки с привязкой контекста:) но - так реально
+// лаконичнее и проще
 
-const placesCard = new Card({}, sel.cardTemplateSelector, popupWithImage.open);
+// Еще раз - спасибо за Вашу работу!
+
+
+const generateCardElement = data => new Card(data, sel.cardTemplateSelector, popupWithImage.open).makeCard();
 
 const cardsSection = new Section({
     items: initialCards, 
-    renderer: data => placesCard.makeCard(data)
-}, sel.placesContainerSelector, popupWithImage.open);
+    renderer: data => {
+        const cardElement = generateCardElement(data);
+        cardsSection.addItem(cardElement);
+    }
+}, sel.placesContainerSelector);
 
 const currentUserInfo = new UserInfo({ 
     nameSelector: '.profile__title', 
@@ -29,9 +39,8 @@ const popupCardEdit = new PopupWithForm(sel.cardEditFormSelector, (evt) => {
         link: inputData.link,
         alt: 'Фотография места',
     };
-    const newCardElement = placesCard.makeCard(newPlaceData);
-    
-    cardsSection.addItem(newCardElement, 'begin');
+       
+    cardsSection.addItem(generateCardElement(newPlaceData), 'begin');
     popupCardEdit.close();
 });
 const popupProfileEdit = new PopupWithForm(sel.profileEditFormSelector, (evt) => {
