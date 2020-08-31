@@ -1,8 +1,0 @@
-.places__card-image {
-    width: 100%;
-    min-height: 78%;
-    max-height: 78%;
-    object-fit: cover;
-    object-position: center;
-    cursor: pointer;
-}
