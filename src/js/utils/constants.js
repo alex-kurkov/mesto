@@ -21,6 +21,13 @@ const cssSelectors = {
   cardEditFormSelector: '.popup-form_type_card-edit',
   placesContainerSelector: '.places__container',
 }
+const validationSetubObject = {
+  inputSelector: cssSelectors.inputSelector,
+  formButtonSelector: cssSelectors.formButtonSelector,
+  inactiveButtonClass: cssClasses.inactiveButtonClass,
+  inputErrorClass: cssClasses.inputErrorClass,
+  errorClass: cssClasses.errorClass,
+};
 
 const profile = document.querySelector('.profile');
 const btnEditProfile = profile.querySelector('.profile__edit-button');
@@ -77,4 +84,4 @@ const initialCards = [
       alt: 'фотография скал и скованного льдом Байкала',
   }
 ];
-  export { cssClasses, cssSelectors, elements, initialCards };
+  export { cssClasses, cssSelectors, elements, initialCards, validationSetubObject };

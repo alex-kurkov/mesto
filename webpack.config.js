@@ -33,8 +33,18 @@ module.exports = {
         loader: 'html-loader',
       },
       {
-        test: /\.(png|svg|jpg|gif|woff2|woff|otf|ico)$/,
+        test: /\.(png|svg|jpg|gif|ico)$/,
         loader: 'file-loader',
+        options: {
+          outputPath: './images',
+        },
+      },
+      {
+        test: /\.(woff2|woff|otf|ttf)$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: './fonts',
+        },
       },
     ]
   },

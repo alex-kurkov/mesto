@@ -1,4 +1,4 @@
-import { cssClasses, cssSelectors as sel } from '../utils/constants.js';
+import { cssClasses, cssSelectors as sel } from '../utils/constants';
 
 export default class Card {
     constructor(data, templateSelector, cardClickhandler) {
@@ -24,7 +24,7 @@ export default class Card {
             .cloneNode(true)
     }
     
-    _handleCardClick = () => {
+    _handleCardClick() {
         this._cardClickhandler({
             link: this._link,
             place: this._place,
@@ -32,7 +32,7 @@ export default class Card {
     }
     
     _setEventListeners = ({ cardImage, likeBtn, trashEl, cardItem }) => {
-        cardImage.addEventListener('click', this._handleCardClick);
+        cardImage.addEventListener('click', this._handleCardClick.bind(this));
         likeBtn.addEventListener('click', this._toggleLike.bind(likeBtn));
         trashEl.addEventListener('click',  this._removeCard.bind(cardItem));
     }
@@ -44,12 +44,8 @@ export default class Card {
         trashEl: card.querySelector(sel.trashBtnSelector),
         cardTitle: card.querySelector(sel.cardTitleSelector),
     });
-    makeCard = () => {
+    makeCardElement = () => {
         const newCard = this._getTemplateElement();
-        // Антон, вообще, здесь выбирал между вариантом объявить this._cardElements = {} 
-        // и в дальнейших методах уже напрямую обращаться через this._cardElements.likeBtn...
-        // но оставил все-таки такой вариант с формированием объекта только в этой области видимости 
-        // и его передачей из метода в метод...
         const cardElements = this._getCardElements(newCard);
 
         cardElements.cardImage.src = this._link;
