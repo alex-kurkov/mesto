@@ -1,5 +1,6 @@
 # **Project 4 Mesto**
 --------------
+[![Maintainability](https://api.codeclimate.com/v1/badges/92fa0d835ec07d342fdc/maintainability)](https://codeclimate.com/github/alex-kurkov/mesto/maintainability)
 https://alex-kurkov.github.io/mesto
 
 assembled and tuned by **Alex Kurkov**,
