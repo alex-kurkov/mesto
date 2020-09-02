@@ -20,7 +20,8 @@ const cssSelectors = {
   profileEditFormSelector: '.popup-form_type_profile-edit',
   cardEditFormSelector: '.popup-form_type_card-edit',
   placesContainerSelector: '.places__container',
-}
+};
+
 const validationSetubObject = {
   inputSelector: cssSelectors.inputSelector,
   formButtonSelector: cssSelectors.formButtonSelector,
@@ -34,7 +35,9 @@ const btnEditProfile = profile.querySelector('.profile__edit-button');
 const btnAddCard = profile.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
 const popupImage = popup.querySelector('.popup-image');
+// eslint-disable-next-line camelcase
 const popupImage_Img = popupImage.querySelector('.popup-image__img');
+// eslint-disable-next-line camelcase
 const popupImage_Title = popupImage.querySelector('.popup-image__title');
 const profileEditModal = popup.querySelector('.popup-form_type_profile-edit');
 const profileEditForm = profileEditModal.querySelector('.form');
@@ -54,34 +57,36 @@ const elements = {
 
 const initialCards = [
   {
-      place: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-      alt: 'фотография гор Архыза',
+    place: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+    alt: 'фотография гор Архыза',
   },
   {
-      place: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-      alt: 'фотография пейзажа Челябинской области',
+    place: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+    alt: 'фотография пейзажа Челябинской области',
   },
   {
-      place: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-      alt: 'фотография городского пейзажа Иваново',
+    place: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+    alt: 'фотография городского пейзажа Иваново',
   },
   {
-      place: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-      alt: 'фотография природы Камчатки',
+    place: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+    alt: 'фотография природы Камчатки',
   },
   {
-      place: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-      alt: 'фотография железной дороги в лесу в Холмогорах',
+    place: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+    alt: 'фотография железной дороги в лесу в Холмогорах',
   },
   {
-      place: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-      alt: 'фотография скал и скованного льдом Байкала',
-  }
-];
-  export { cssClasses, cssSelectors, elements, initialCards, validationSetubObject };
+    place: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+    alt: 'фотография скал и скованного льдом Байкала',
+  }];
+
+export {
+  cssClasses, cssSelectors, elements, initialCards, validationSetubObject,
+};

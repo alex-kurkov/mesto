@@ -30,8 +30,9 @@ export default class PopupWithForm extends Popup {
 
   setInitialInputValues(data) {
     this._inputList = this._form.querySelectorAll('.form__input');
-    this._inputList.forEach((input) => {
-      input.value = data[input.name];
+    this._inputList.forEach((inputField) => {
+      // eslint-disable-next-line no-param-reassign
+      inputField.value = data[inputField.name];
     });
   }
 
