@@ -1,20 +1,24 @@
 import { cssClasses, cssSelectors as sel } from '../utils/constants';
 
 export default class Card {
-  constructor(data, templateSelector, cardClickhandler) {
+  constructor(data, templateSelector, cardClickhandler, popupApproval) {
     this._place = data.place;
     this._link = data.link;
     this._alt = data.alt;
     this._templateSelector = templateSelector;
     this._cardClickhandler = cardClickhandler;
+    this._popupApproval = popupApproval;
   }
 
   _toggleLike() {
     this.classList.toggle(cssClasses.clickedLikeBtnClass);
   }
 
-  _removeCard() {
-    this.remove();
+  // new!
+  _showApproval() {
+    this._popupApproval.open();
+    console.log(this._popupApproval.functionToExecute);
+    this._popupApproval.approvalHandler = () => this._cardItem.remove();
   }
 
   _getTemplateElement() {
@@ -31,12 +35,10 @@ export default class Card {
     });
   }
 
-    _setEventListeners = ({
-      cardImage, likeBtn, trashEl, cardItem,
-    }) => {
-      cardImage.addEventListener('click', this._handleCardClick.bind(this));
-      likeBtn.addEventListener('click', this._toggleLike.bind(likeBtn));
-      trashEl.addEventListener('click', this._removeCard.bind(cardItem));
+    _setEventListeners = () => {
+      this._cardImage.addEventListener('click', this._handleCardClick.bind(this));
+      this._likeBtn.addEventListener('click', this._toggleLike.bind(this._likeBtn));
+      this._trashEl.addEventListener('click', this._showApproval.bind(this));
     }
 
     _getCardElements = (card) => ({
@@ -48,14 +50,18 @@ export default class Card {
     });
 
     makeCardElement = () => {
-      const newCard = this._getTemplateElement();
-      const cardElements = this._getCardElements(newCard);
+      this._newCard = this._getTemplateElement();
+      this._cardItem = this._newCard.querySelector(sel.cardSelector);
+      this._cardImage = this._newCard.querySelector(sel.cardImageSelector);
+      this._likeBtn = this._newCard.querySelector(sel.likeBtnSelector);
+      this._trashEl = this._newCard.querySelector(sel.trashBtnSelector);
+      this._cardTitle = this._newCard.querySelector(sel.cardTitleSelector);
 
-      cardElements.cardImage.src = this._link;
-      cardElements.cardImage.alt = this._alt;
-      cardElements.cardTitle.textContent = this._place;
+      this._cardImage.src = this._link;
+      this._cardImage.alt = this._alt;
+      this._cardTitle.textContent = this._place;
 
-      this._setEventListeners(cardElements);
-      return cardElements.cardItem;
+      this._setEventListeners();
+      return this._cardItem;
     }
 }
