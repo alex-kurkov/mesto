@@ -19,10 +19,12 @@ Educational site applying basic JS features: modules, classes, eventHandlers
 * Forms validated
 * Other features: card adding, like-fn
 
-### **Amendments to be made soon**
+### **What's new**
 ----------------------------------
 
-further JS-development
+* API added
+* interact with server DB added
+* likes counter added
 
 --------
 [connect me via email](mailto:alexkourkov@yandex.ru "Email")
