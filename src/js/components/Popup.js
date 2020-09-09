@@ -4,6 +4,7 @@ export default class Popup {
   constructor(popupSelector) {
     this._modal = el.popup.querySelector(popupSelector);
     this._closeBtn = this._modal.querySelector(sel.closePopupBtnSelector);
+    this.actionButton = this._modal.querySelector(sel.actionButtonSelector);
   }
 
     _hideElement = (...rest) => {

@@ -8,6 +8,7 @@ export default class UserInfo {
     getUserInfo = () => ({
       name: this._elName.textContent,
       about: this._elAbout.textContent,
+      avatar: this._elAvatar.src,
     });
 
     setUserInfo({ name, about }) {

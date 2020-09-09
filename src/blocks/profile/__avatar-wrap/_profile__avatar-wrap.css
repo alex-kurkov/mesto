@@ -1,0 +1,39 @@
+.profile__avatar-wrap {
+    box-sizing: border-box;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    align-self: center;
+    justify-self: center;
+    position: relative;
+}
+
+.profile__avatar-wrap:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity linear .2s;
+}
+
+.profile__avatar-wrap:hover {
+    opacity: .6;
+    visibility: visible;
+    transition: opacity linear .2s;
+}
+
+.profile__avatar-wrap::after {
+    content: url('../../../img/icons/avatar-edit-icon.svg');
+    position: absolute;
+    top: 50px;
+    left: 42px;
+    width: 26px;
+    height: 26px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+@media (max-width: 960px) {
+    .profile__avatar-wrap {
+        margin-bottom: 16px;
+    }
+}

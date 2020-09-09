@@ -16,13 +16,15 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./img/hian-oliveira.jpg" alt="фотография героя страницы">
+            <div class="profile__avatar-wrap">
+                <img class="profile__avatar" src="#" alt="фотография героя страницы">
+            </div>     
             <div class="profile__info-container">
                 <div class="profile__title-wrap">
-                    <h1 class="profile__title">Hian Oliveira</h1>
+                    <h1 class="profile__title"></h1>
                     <button class="profile__edit-button" type="button" title="Изменить"></button>
                 </div> 
-                <p class="profile__profession">Travel blogger</p>
+                <p class="profile__profession"></p>
             </div>
             <div class="profile__add-container">
                 <button class="profile__add-button" type="button" title="Добавить место"></button>
@@ -53,6 +55,20 @@
                         <input class="form__input form__input_txt_about" type="text" id="about-input" name="about" 
                             value="about" placeholder="О Вас" minlength="2" maxlength="200" required>
                         <span class="form__error" id="about-input-error"></span>
+                    </label>
+                </fieldset>
+                <button class="form__btn" type="submit">Сохранить</button>
+            </form>
+        </div>
+        <div class="popup-form popup-form_type_avatar-edit">
+            <button class="close-btn" type="button" title="Закрыть"></button>
+            <form class="form" method="post" name="avatar-edit-form" novalidate>
+                <fieldset class="form__input-container">
+                    <legend class="form__title">Обновить аватар</legend>
+                    <label class="form__field">
+                        <input class="form__input form__input_txt_avatar" type="url" id="avatar-input" name="avatar"
+                        value="" placeholder="Ссылка на новый аватар" required>
+                        <span class="form__error" id="avatar-input-error"></span>
                     </label>
                 </fieldset>
                 <button class="form__btn" type="submit">Сохранить</button>

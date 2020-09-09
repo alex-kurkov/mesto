@@ -19,7 +19,15 @@ const cssSelectors = {
   closePopupBtnSelector: '.close-btn',
   profileEditFormSelector: '.popup-form_type_profile-edit',
   cardEditFormSelector: '.popup-form_type_card-edit',
+  avatarEditFormSelector: '.popup-form_type_avatar-edit',
+  approvalPopupSelector: '.popup-form_type_approval',
   placesContainerSelector: '.places__container',
+  placesLikesCounterSelector: '.places__like-counter',
+  avatarSelector: '.profile__avatar',
+  aboutSelector: '.profile__profession',
+  nameSelector: '.profile__title',
+  popupImageSelector: '.popup-image',
+  actionButtonSelector: '.form__btn',
 };
 
 const validationSetubObject = {
@@ -43,6 +51,9 @@ const profileEditModal = popup.querySelector('.popup-form_type_profile-edit');
 const profileEditForm = profileEditModal.querySelector('.form');
 const cardEditModal = popup.querySelector('.popup-form_type_card-edit');
 const cardEditForm = cardEditModal.querySelector('.form');
+const avatarEditModal = popup.querySelector('.popup-form_type_avatar-edit');
+const avatarEditForm = avatarEditModal.querySelector('.form');
+const avatar = profile.querySelector('.profile__avatar-wrap');
 
 const elements = {
   btnEditProfile,
@@ -53,6 +64,8 @@ const elements = {
   popupImage_Title,
   profileEditForm,
   cardEditForm,
+  avatarEditForm,
+  avatar,
 };
 
 export {

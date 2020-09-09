@@ -1,13 +1,6 @@
 export default class Section {
-  constructor(renderer, containerSelector) {
-    this._renderer = renderer;
+  constructor(containerSelector) {
     this._container = document.querySelector(containerSelector);
-  }
-
-  renderItems(arr) {
-    arr.forEach((item) => {
-      this._renderer(item);
-    });
   }
 
   addItem(element, target = 'begin') {
@@ -16,9 +9,5 @@ export default class Section {
     } else {
       this._container.append(element);
     }
-  }
-
-  clear() {
-    this._container.innerHTML = '';
   }
 }

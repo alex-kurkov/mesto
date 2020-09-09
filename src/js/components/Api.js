@@ -14,7 +14,11 @@ export default class Api {
       headers: this._headers,
       method: 'GET',
     })
-      .then((res) => res.json());
+      .then((res) => {
+        if (res.ok) { return res.json(); }
+        console.log(`FETCH ERROR!!! ${res.status}`);
+        return null;
+      });
   }
 
   postCard({ name, link }) {
@@ -23,7 +27,11 @@ export default class Api {
       method: 'POST',
       body: JSON.stringify({ name, link }),
     })
-      .then((res) => res.json());
+      .then((res) => {
+        if (res.ok) { return res.json(); }
+        console.log(`FETCH ERROR!!! ${res.status}`);
+        return null;
+      });
   }
 
   deleteCard(cardId) {
@@ -37,7 +45,11 @@ export default class Api {
     return fetch(this._url.me, {
       headers: this._headers,
     })
-      .then((res) => res.json());
+      .then((res) => {
+        if (res.ok) { return res.json(); }
+        console.log(`FETCH ERROR!!! ${res.status}`);
+        return null;
+      });
   }
 
   patchUserData({ name, about }) {
@@ -48,11 +60,11 @@ export default class Api {
     });
   }
 
-  patchAvatar(link) {
-    fetch(`${this._url.me}/avatar`, {
+  patchAvatar(data) {
+    return fetch(`${this._url.me}/avatar`, {
       headers: this._headers,
       method: 'PATCH',
-      body: JSON.stringify({ avatar: link }),
+      body: JSON.stringify(data),
     });
   }
 
@@ -61,7 +73,11 @@ export default class Api {
       headers: this._headers,
       method: 'PUT',
     })
-      .then((res) => res.json());
+      .then((res) => {
+        if (res.ok) { return res.json(); }
+        console.log(`FETCH ERROR!!! ${res.status}`);
+        return null;
+      });
   }
 
   unlikeCard(cardId) {
@@ -69,6 +85,10 @@ export default class Api {
       headers: this._headers,
       method: 'DELETE',
     })
-      .then((res) => res.json());
+      .then((res) => {
+        if (res.ok) { return res.json(); }
+        console.log(`FETCH ERROR!!! ${res.status}`);
+        return null;
+      });
   }
 }
