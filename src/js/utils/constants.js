@@ -55,38 +55,6 @@ const elements = {
   cardEditForm,
 };
 
-const initialCards = [
-  {
-    place: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'фотография гор Архыза',
-  },
-  {
-    place: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-    alt: 'фотография пейзажа Челябинской области',
-  },
-  {
-    place: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-    alt: 'фотография городского пейзажа Иваново',
-  },
-  {
-    place: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'фотография природы Камчатки',
-  },
-  {
-    place: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-    alt: 'фотография железной дороги в лесу в Холмогорах',
-  },
-  {
-    place: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-    alt: 'фотография скал и скованного льдом Байкала',
-  }];
-
 export {
-  cssClasses, cssSelectors, elements, initialCards, validationSetubObject,
+  cssClasses, cssSelectors, elements, validationSetubObject,
 };

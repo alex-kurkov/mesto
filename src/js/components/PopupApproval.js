@@ -2,10 +2,10 @@ import Popup from './Popup';
 import { elements as el } from '../utils/constants';
 
 export default class PopupApproval extends Popup {
-  constructor(popupSelector, submitHandler, approvalHandler) {
+  constructor(popupSelector, submitHandler) {
     super(popupSelector);
     this._submitHandler = submitHandler;
-    this.approvalHandler = approvalHandler;
+    this.approvalHandler = () => {};
     this._form = this._modal.querySelector('.form');
     this._color = 'rgba(0, 0, 0, .5)';
   }
