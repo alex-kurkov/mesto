@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable prefer-promise-reject-errors */
 export default class Api {
   constructor({ groupId, headers }) {
     this._groupId = groupId;
@@ -16,8 +18,7 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) { return res.json(); }
-        console.log(`FETCH ERROR!!! ${res.status}`);
-        return null;
+        return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
 
@@ -29,8 +30,7 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) { return res.json(); }
-        console.log(`FETCH ERROR!!! ${res.status}`);
-        return null;
+        return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
 
@@ -38,7 +38,11 @@ export default class Api {
     return fetch(`${this._url.cards}/${cardId}`, {
       headers: this._headers,
       method: 'DELETE',
-    });
+    })
+      .then((res) => {
+        if (res.ok) { return; }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
   }
 
   getUserData() {
@@ -47,8 +51,7 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) { return res.json(); }
-        console.log(`FETCH ERROR!!! ${res.status}`);
-        return null;
+        return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
 
@@ -57,7 +60,11 @@ export default class Api {
       headers: this._headers,
       method: 'PATCH',
       body: JSON.stringify({ name, about }),
-    });
+    })
+      .then((res) => {
+        if (res.ok) { return; }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
   }
 
   patchAvatar(data) {
@@ -65,7 +72,11 @@ export default class Api {
       headers: this._headers,
       method: 'PATCH',
       body: JSON.stringify(data),
-    });
+    })
+      .then((res) => {
+        if (res.ok) { return; }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
   }
 
   likeCard(cardId) {
@@ -75,8 +86,7 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) { return res.json(); }
-        console.log(`FETCH ERROR!!! ${res.status}`);
-        return null;
+        return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
 
@@ -87,8 +97,7 @@ export default class Api {
     })
       .then((res) => {
         if (res.ok) { return res.json(); }
-        console.log(`FETCH ERROR!!! ${res.status}`);
-        return null;
+        return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
 }
