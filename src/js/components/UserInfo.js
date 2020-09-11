@@ -3,20 +3,18 @@ export default class UserInfo {
     this._elName = document.querySelector(nameSelector);
     this._elAbout = document.querySelector(aboutSelector);
     this._elAvatar = document.querySelector(avatarSelector);
+    this._id = null;
   }
 
-    getUserInfo = () => ({
+    getUserDOMInfo = () => ({
       name: this._elName.textContent,
       about: this._elAbout.textContent,
       avatar: this._elAvatar.src,
     });
 
-    setUserInfo({ name, about }) {
-      this._elName.textContent = name;
-      this._elAbout.textContent = about;
-    }
-
-    setUserAvatar({ avatar }) {
-      this._elAvatar.src = avatar;
+    setUserInfo({ name, about, avatar }) {
+      if (name) this._elName.textContent = name;
+      if (about) this._elAbout.textContent = about;
+      if (avatar) this._elAvatar.src = avatar;
     }
 }

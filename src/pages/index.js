@@ -12,27 +12,20 @@ import UserInfo from '../js/components/UserInfo';
 import Section from '../js/components/Section';
 import Api from '../js/components/Api';
 
-// global constants
-const ownId = '300403dbc214b9e8436dbe03';
+// make instance of Api class
 const api = new Api({
-  groupId: 'cohort-15',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-15',
   headers: {
     authorization: '83643712-63ca-4db0-9332-910fda1def28',
     'content-type': 'application/json',
   },
 });
 
+// make card container
 const cardsSection = new Section(sel.placesContainerSelector);
 
-// make instance of UserInfo class
+// make instance of UserInfo class (currentUserInfo._id will be set later thru api.getUserInfo())
 const currentUserInfo = new UserInfo(sel);
-
-api.getUserData()
-  .then((user) => {
-    currentUserInfo.setUserInfo(user);
-    currentUserInfo.setUserAvatar(user);
-  })
-  .catch((error) => console.log(error));
 
 // make approval Popup instance of Popup class
 const popupApproval = new PopupApproval(
@@ -40,7 +33,15 @@ const popupApproval = new PopupApproval(
   (evt) => {
     evt.preventDefault();
     popupApproval.approvalHandler();
-    popupApproval.close();
+    /* Арина, спасибо Вам за очень позитивное и ооочень содержательное
+    ревью:) Не каждый раз настолько подробно расписаны недочеты, а, между тем,
+    это как раз самый важный и продуктивный момент усвоения новых знаний (имею
+    в виду стадию ревью). Ваше - выше всяких похвал :)
+    Еще раз, большое спасибо Вам за Вашу не очень веселую, но такую важную
+    работу, тем более, что Вы ее делаете так качественно!
+    Обязательно факультативно изучу генератор документации JSDoc, после того, как попробую
+    написать запланированные факультативно на этот спринт тесты с использованием библиотеки Jest;)
+    остальные рекомендации постарался учесть) */
   },
 );
 
@@ -51,13 +52,14 @@ const popupWithImage = new PopupWithImage(sel.popupImageSelector);
 const renderCardElement = (data, target) => {
   const card = new Card({
     data,
-    ownId,
+    ownId: currentUserInfo._id,
     templateSelector: sel.cardTemplateSelector,
     cardClickhandler: popupWithImage.open,
     popupApproval,
     deleteCardHandler: () => {
       api.deleteCard(data._id)
         .then(() => card.removeCardElement())
+        .then(() => popupApproval.close())
         .catch((error) => console.log(error));
     },
     likeCardHandler: () => {
@@ -65,8 +67,8 @@ const renderCardElement = (data, target) => {
         .then((res) => card.processLikes(res))
         .catch((error) => console.log(error));
     },
-    unlikeCardHandler: () => {
-      api.unlikeCard(data._id)
+    dislikeCardHandler: () => {
+      api.dislikeCard(data._id)
         .then((item) => card.processLikes(item))
         .catch((error) => console.log(error));
     },
@@ -83,13 +85,18 @@ const popupCardEdit = new PopupWithForm(sel.cardEditFormSelector, (evt) => {
     name: inputData.place,
     link: inputData.link,
   };
-  popupCardEdit.actionButton.textContent = 'Создаем карточку...';
+  popupCardEdit.setActionBtnText('Создаем карточку...');
   api.postCard(newPlaceData)
     .then((card) => renderCardElement(card, 'begin'))
-    .catch((error) => console.log(error))
+    .then(() => popupCardEdit.close())
+    .catch((error) => {
+      console.log(error);
+      // !!! Подумать !!! Здесь бы еще в модал пользователю что-то вывести - может,
+      // текст ошибки ответа от сервера, потом через delay().then(() => {}
+      // перейти к потребителю, меняющему текст кнопки
+    })
     .finally(() => {
-      popupCardEdit.close();
-      popupCardEdit.actionButton.textContent = 'Создать';
+      popupCardEdit.setActionBtnText('Создать');
     });
 });
 
@@ -98,13 +105,13 @@ const popupAvatarEdit = new PopupWithForm(
   (evt) => {
     evt.preventDefault();
     const inputData = popupAvatarEdit._getInputValues();
-    popupAvatarEdit.actionButton.textContent = 'Сохранение...';
+    popupAvatarEdit.setActionBtnText('Сохранение...');
     api.patchAvatar(inputData)
-      .then(() => currentUserInfo.setUserAvatar(inputData))
+      .then(() => currentUserInfo.setUserInfo(inputData))
+      .then(() => popupAvatarEdit.close())
       .catch((error) => console.log(console.log(error)))
       .finally(() => {
-        popupAvatarEdit.close();
-        popupAvatarEdit.actionButton.textContent = 'Сохранить';
+        popupAvatarEdit.setActionBtnText('Сохранить');
       });
   },
 );
@@ -114,13 +121,13 @@ const popupProfileEdit = new PopupWithForm(
   (evt) => {
     evt.preventDefault();
     const inputData = popupProfileEdit._getInputValues();
-    popupProfileEdit.actionButton.textContent = 'Сохранение...';
+    popupProfileEdit.setActionBtnText('Сохранение...');
     api.patchUserData(inputData)
       .then(() => currentUserInfo.setUserInfo(inputData))
+      .then(() => popupProfileEdit.close())
       .catch((error) => console.log(console.log(error)))
       .finally(() => {
-        popupProfileEdit.close();
-        popupProfileEdit.actionButton.textContent = 'Сохранить';
+        popupProfileEdit.setActionBtnText('Сохранить');
       });
   },
 );
@@ -133,16 +140,25 @@ formCardEditValidation.enableValidation();
 const formAvatarEditValidation = new FormValidator(validationSetubObject, el.avatarEditForm);
 formAvatarEditValidation.enableValidation();
 
-// render server cards
-api.getCards()
-  .then((cards) => {
-    cards.forEach((card) => renderCardElement(card));
+// get User Info + cards array + render initial DOM
+// Арина, вот здесь особенно порадовало озарение,
+// пришедшее благодаря Вам, как сделать правильно и красиво :)
+Promise.all([
+  api.getUserData(),
+  api.getCards(),
+])
+  .then((values) => {
+    const [userData, serverCards] = values;
+    currentUserInfo._id = userData._id;
+    currentUserInfo.setUserInfo(userData);
+    return serverCards;
   })
+  .then((cards) => cards.forEach((card) => renderCardElement(card)))
   .catch((error) => console.log(error));
 
 // define listeners' callbacks
 const showProfilePopup = () => {
-  const data = currentUserInfo.getUserInfo();
+  const data = currentUserInfo.getUserDOMInfo();
   popupProfileEdit.setInitialInputValues(data);
   popupProfileEdit.open();
   formProfileEditValidation.hideErrors();

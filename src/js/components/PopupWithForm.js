@@ -1,5 +1,5 @@
 import Popup from './Popup';
-import { elements as el } from '../utils/constants';
+import { elements as el, cssSelectors as sel } from '../utils/constants';
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, formHandler) {
@@ -7,6 +7,11 @@ export default class PopupWithForm extends Popup {
     this._formHandler = formHandler;
     this._color = 'rgba(0, 0, 0, .5)';
     this._form = this._modal.querySelector('.form');
+    this._actionBtn = this._form.querySelector(sel.actionButtonSelector);
+  }
+
+  setActionBtnText(text) {
+    this._actionBtn.textContent = text;
   }
 
   _getInputValues() {

@@ -9,7 +9,7 @@ export default class Card {
     popupApproval,
     deleteCardHandler,
     likeCardHandler,
-    unlikeCardHandler,
+    dislikeCardHandler,
   }) {
     this._place = data.name;
     this._link = data.link;
@@ -21,7 +21,7 @@ export default class Card {
     this._popupApproval = popupApproval;
     this._deleteCardHandler = deleteCardHandler;
     this._likeCardHandler = likeCardHandler;
-    this._unlikeCardHandler = unlikeCardHandler;
+    this._dislikeCardHandler = dislikeCardHandler;
     this._isOwner = ownId === this._cardOwner._id;
     this._isLiked = data.likes.some((user) => user._id === ownId);
   }
@@ -48,7 +48,7 @@ export default class Card {
     if (!this._isLiked) {
       this._likeCardHandler();
     } else {
-      this._unlikeCardHandler();
+      this._dislikeCardHandler();
     }
   }
 

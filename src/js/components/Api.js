@@ -1,103 +1,80 @@
 /* eslint-disable consistent-return */
 /* eslint-disable prefer-promise-reject-errors */
 export default class Api {
-  constructor({ groupId, headers }) {
-    this._groupId = groupId;
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
     this._headers = headers;
-    this._url = {
-      cards: `https://mesto.nomoreparties.co/v1/${this._groupId}/cards`, // Загрузка карточек с сервера GET/POST
-      me: `https://mesto.nomoreparties.co/v1/${this._groupId}/users/me`, // Загрузка информации о пользователе с сервера GET/PATCH
-      likes: `https://mesto.nomoreparties.co/v1/${this._groupId}/cards/likes`,
-    };
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  _getResponseData(response) {
+    if (response.ok) { return response.json(); }
+    return Promise.reject(new Error(`Не установлено соединение с сервером: ${response.status}`));
   }
 
   getCards() {
-    return fetch(this._url.cards, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
       method: 'GET',
     })
-      .then((res) => {
-        if (res.ok) { return res.json(); }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   postCard({ name, link }) {
-    return fetch(this._url.cards, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
       method: 'POST',
       body: JSON.stringify({ name, link }),
     })
-      .then((res) => {
-        if (res.ok) { return res.json(); }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url.cards}/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       headers: this._headers,
       method: 'DELETE',
     })
-      .then((res) => {
-        if (res.ok) { return; }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   getUserData() {
-    return fetch(this._url.me, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     })
-      .then((res) => {
-        if (res.ok) { return res.json(); }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   patchUserData({ name, about }) {
-    return fetch(this._url.me, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
       method: 'PATCH',
       body: JSON.stringify({ name, about }),
     })
-      .then((res) => {
-        if (res.ok) { return; }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   patchAvatar(data) {
-    return fetch(`${this._url.me}/avatar`, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       headers: this._headers,
       method: 'PATCH',
       body: JSON.stringify(data),
     })
-      .then((res) => {
-        if (res.ok) { return; }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
   likeCard(cardId) {
-    return fetch(`${this._url.likes}/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       headers: this._headers,
       method: 'PUT',
     })
-      .then((res) => {
-        if (res.ok) { return res.json(); }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 
-  unlikeCard(cardId) {
-    return fetch(`${this._url.likes}/${cardId}`, {
+  dislikeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       headers: this._headers,
       method: 'DELETE',
     })
-      .then((res) => {
-        if (res.ok) { return res.json(); }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then((res) => this._getResponseData(res));
   }
 }
