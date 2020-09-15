@@ -33,15 +33,6 @@ const popupApproval = new PopupApproval(
   (evt) => {
     evt.preventDefault();
     popupApproval.approvalHandler();
-    /* Арина, спасибо Вам за очень позитивное и ооочень содержательное
-    ревью:) Не каждый раз настолько подробно расписаны недочеты, а, между тем,
-    это как раз самый важный и продуктивный момент усвоения новых знаний (имею
-    в виду стадию ревью). Ваше - выше всяких похвал :)
-    Еще раз, большое спасибо Вам за Вашу не очень веселую, но такую важную
-    работу, тем более, что Вы ее делаете так качественно!
-    Обязательно факультативно изучу генератор документации JSDoc, после того, как попробую
-    написать запланированные факультативно на этот спринт тесты с использованием библиотеки Jest;)
-    остальные рекомендации постарался учесть) */
   },
 );
 
@@ -91,9 +82,6 @@ const popupCardEdit = new PopupWithForm(sel.cardEditFormSelector, (evt) => {
     .then(() => popupCardEdit.close())
     .catch((error) => {
       console.log(error);
-      // !!! Подумать !!! Здесь бы еще в модал пользователю что-то вывести - может,
-      // текст ошибки ответа от сервера, потом через delay().then(() => {}
-      // перейти к потребителю, меняющему текст кнопки
     })
     .finally(() => {
       popupCardEdit.setActionBtnText('Создать');
@@ -140,9 +128,6 @@ formCardEditValidation.enableValidation();
 const formAvatarEditValidation = new FormValidator(validationSetubObject, el.avatarEditForm);
 formAvatarEditValidation.enableValidation();
 
-// get User Info + cards array + render initial DOM
-// Арина, вот здесь особенно порадовало озарение,
-// пришедшее благодаря Вам, как сделать правильно и красиво :)
 Promise.all([
   api.getUserData(),
   api.getCards(),
