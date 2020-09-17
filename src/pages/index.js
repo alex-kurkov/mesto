@@ -7,7 +7,7 @@ import Card from '../js/components/Card';
 import FormValidator from '../js/components/FormValidator';
 import PopupWithImage from '../js/components/PopupWithImage';
 import PopupWithForm from '../js/components/PopupWithForm';
-import PopupApproval from '../js/components/PopupApproval';
+import PopupConfirm from '../js/components/PopupConfirm';
 import UserInfo from '../js/components/UserInfo';
 import Section from '../js/components/Section';
 import Api from '../js/components/Api';
@@ -27,13 +27,13 @@ const cardsSection = new Section(sel.placesContainerSelector);
 // make instance of UserInfo class (currentUserInfo._id will be set later thru api.getUserInfo())
 const currentUserInfo = new UserInfo(sel);
 
-// make approval Popup instance of Popup class
-const popupApproval = new PopupApproval(
-  sel.approvalPopupSelector,
-  (evt) => {
+// make confirmation Popup instance of Popup class
+const popupConfirm = new PopupConfirm(
+  sel.confirmPopupSelector,
+  /* (evt) => {
     evt.preventDefault();
-    popupApproval.approvalHandler();
-  },
+    popupConfirm.confirmHandler();
+  }, */
 );
 
 // make image popup instance of Popup class
@@ -46,11 +46,11 @@ const renderCardElement = (data, target) => {
     ownId: currentUserInfo._id,
     templateSelector: sel.cardTemplateSelector,
     cardClickhandler: popupWithImage.open,
-    popupApproval,
+    popupConfirm,
     deleteCardHandler: () => {
       api.deleteCard(data._id)
         .then(() => card.removeCardElement())
-        .then(() => popupApproval.close())
+        .then(() => popupConfirm.close())
         .catch((error) => console.log(error));
     },
     likeCardHandler: () => {
@@ -128,6 +128,7 @@ formCardEditValidation.enableValidation();
 const formAvatarEditValidation = new FormValidator(validationSetubObject, el.avatarEditForm);
 formAvatarEditValidation.enableValidation();
 
+// render initial DOM
 Promise.all([
   api.getUserData(),
   api.getCards(),

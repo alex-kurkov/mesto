@@ -5,7 +5,7 @@ build:
 	npm run build
 
 lint:
-	npx eslint
+	npx eslint .
 
 deploy:
 	npm run deploy

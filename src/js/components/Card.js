@@ -6,7 +6,7 @@ export default class Card {
     ownId,
     templateSelector,
     cardClickhandler,
-    popupApproval,
+    popupConfirm,
     deleteCardHandler,
     likeCardHandler,
     dislikeCardHandler,
@@ -18,7 +18,7 @@ export default class Card {
     this._likesCount = data.likes.length;
     this._templateSelector = templateSelector;
     this._cardClickhandler = cardClickhandler;
-    this._popupApproval = popupApproval;
+    this._popupConfirm = popupConfirm;
     this._deleteCardHandler = deleteCardHandler;
     this._likeCardHandler = likeCardHandler;
     this._dislikeCardHandler = dislikeCardHandler;
@@ -52,11 +52,11 @@ export default class Card {
     }
   }
 
-  _showApproval() {
-    this._popupApproval.open();
-    this._popupApproval.approvalHandler = () => {
+  _showConfirm() {
+    this._popupConfirm.confirmHandler = () => {
       this._deleteCardHandler();
     };
+    this._popupConfirm.open();
   }
 
   removeCardElement() {
@@ -89,7 +89,7 @@ export default class Card {
   _setEventListeners = () => {
     this._cardImage.addEventListener('click', this._handleCardClick.bind(this));
     this._likeBtn.addEventListener('click', this._handleLike.bind(this));
-    if (this._isOwner) this._trashEl.addEventListener('click', this._showApproval.bind(this));
+    if (this._isOwner) this._trashEl.addEventListener('click', this._showConfirm.bind(this));
   }
 
   makeCardElement = () => {

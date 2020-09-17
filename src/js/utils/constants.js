@@ -20,7 +20,7 @@ const cssSelectors = {
   profileEditFormSelector: '.popup-form_type_profile-edit',
   cardEditFormSelector: '.popup-form_type_card-edit',
   avatarEditFormSelector: '.popup-form_type_avatar-edit',
-  approvalPopupSelector: '.popup-form_type_approval',
+  confirmPopupSelector: '.popup-form_type_approval',
   placesContainerSelector: '.places__container',
   placesLikesCounterSelector: '.places__like-counter',
   avatarSelector: '.profile__avatar',
